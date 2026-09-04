@@ -75,8 +75,13 @@ export async function POST(req: NextRequest) {
     
     return NextResponse.json({ success: true }, { status: 200 });
     
-  } catch (error) {
+  } catch (error: any) {
     console.error("Login error:", error);
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ 
+        error: "Server configuration error: DATABASE_URL is not set in environment variables." 
+      }, { status: 500 });
+    }
     return NextResponse.json({ error: "An unexpected error occurred." }, { status: 500 });
   }
 }

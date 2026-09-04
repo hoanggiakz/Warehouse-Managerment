@@ -2,7 +2,11 @@ import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 import { SessionPayload } from './types';
 
-const secretKey = process.env.AUTH_SECRET;
+const DEFAULT_FALLBACK_SECRET = 'maluzen-warehouse-default-fallback-auth-secret-key-32-bytes-minimum!';
+const secretKey = process.env.AUTH_SECRET || DEFAULT_FALLBACK_SECRET;
+if (!process.env.AUTH_SECRET && process.env.NODE_ENV === 'production') {
+  console.warn('[SECURITY WARNING] AUTH_SECRET environment variable is not set in production. Using fallback secret.');
+}
 const key = new TextEncoder().encode(secretKey);
 
 export const COOKIE_NAME = 'auth_token';
