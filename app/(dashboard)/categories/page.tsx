@@ -8,6 +8,11 @@ export const dynamic = 'force-dynamic';
 export default async function CategoriesPage() {
   const [categories, session] = await Promise.all([
     prisma.category.findMany({
+      include: {
+        _count: {
+          select: { parts: true }
+        }
+      },
       orderBy: { name: 'asc' }
     }),
     getSession()

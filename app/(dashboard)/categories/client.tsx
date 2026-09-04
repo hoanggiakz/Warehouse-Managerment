@@ -69,7 +69,7 @@ export function CategoriesClient({ initialCategories, permissions }: { initialCa
               {category.status}
             </Badge>
             <div className="text-xs text-muted-foreground min-w-[80px] text-right">
-              {category._count.parts} parts
+              {category._count?.parts ?? 0} parts
             </div>
             
             <div className="flex items-center gap-1">

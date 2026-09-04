@@ -25,7 +25,7 @@ interface PartReportViewProps {
 export function PartReportView({ data }: PartReportViewProps) {
   const [sortKey, setSortKey] = useState<'movement' | 'stock' | 'defectRate' | 'exported' | 'imported'>('movement');
 
-  const sortedParts = [...data.parts].sort((a, b) => {
+  const sortedParts = [...(data?.parts || [])].sort((a, b) => {
     switch (sortKey) {
       case 'stock':
         return a.currentStock - b.currentStock; // lowest stock first
