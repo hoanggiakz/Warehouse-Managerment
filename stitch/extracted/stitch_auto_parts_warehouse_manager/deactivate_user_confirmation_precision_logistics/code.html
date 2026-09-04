@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Precision Logistics - Deactivate User</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#2d3449",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-container": "#b4bbd5",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadc",
+                        "surface-container": "#eceef0",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary-fixed": "#0b1c30",
+                        "border-subtle": "#E2E8F0",
+                        "primary": "#00288e",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "on-primary-container": "#a8b8ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-primary-fixed": "#001453",
+                        "outline": "#757684",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#d3e4fe",
+                        "success": "#059669",
+                        "surface-tint": "#3755c3",
+                        "primary-fixed": "#dde1ff",
+                        "on-primary-fixed-variant": "#173bab",
+                        "primary-container": "#1e40af",
+                        "inverse-primary": "#b8c4ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-surface-variant": "#444653",
+                        "warning": "#D97706",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#434b60",
+                        "surface": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed": "#131b2e",
+                        "secondary": "#505f76",
+                        "on-surface": "#191c1e",
+                        "surface-container-highest": "#e0e3e5",
+                        "danger": "#E11D48",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#d0e1fb",
+                        "surface-alt": "#F1F5F9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit-6": "24px",
+                        "gutter": "16px",
+                        "unit-4": "16px",
+                        "margin-desktop": "24px",
+                        "unit-1": "4px",
+                        "unit-2": "8px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "unit-3": "12px",
+                        "unit-8": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "section-title": ["Inter"],
+                        "card-title": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "body-base": ["Inter"],
+                        "page-title": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "card-title": ["16px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "data-mono": ["13px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "page-title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased h-screen w-screen overflow-hidden flex relative">
+<!-- Dimmed Background Content (User Management List Mockup) -->
+<div class="absolute inset-0 z-0 opacity-40 pointer-events-none flex">
+<!-- SideNavBar Mockup -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-border-subtle flex flex-col py-unit-6 px-unit-2">
+<div class="px-unit-4 mb-unit-6">
+<div class="flex items-center gap-unit-2">
+<img class="w-8 h-8 rounded" data-alt="A minimalist geometric logo for an industrial warehouse logistics company, featuring sharp interlocking cube shapes in deep indigo and slate gray tones. The design communicates stability, precision, and modern supply chain management against a bright, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzGcesaHr3fG6l9jyFKx0LWvY3i2aAukLwGqArZOclkmm5crlsKlx7lBABt7h61wnG17nHhQPlunNZRUqGwOu30cqukjFCUjZH54ssgN9oAYNqVPXlpTWfKVj4rY6F_B-w95u0_Qc6C-KMo7bhetaYeX7pECCms2gCMZBj4KjWtkps22UkfKzif1SN5XySVHkdzL4j2cFLY44mqPnhtoHLF52v1e8PCuKwXXMWX6wj3oUYdFISkBDOYA">
+<div>
+<h1 class="font-page-title text-page-title font-bold text-primary">Precision Logistics</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Warehouse Management</p>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-unit-1">
+<a class="flex items-center gap-unit-3 px-unit-4 py-unit-3 rounded-lg text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-4 py-unit-3 rounded-lg text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-label-caps text-label-caps">Parts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-4 py-unit-3 rounded-lg text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+<span class="font-label-caps text-label-caps">Warehouses</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-4 py-unit-3 rounded-lg text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-caps text-label-caps">Inventory</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-4 py-unit-3 rounded-lg text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps">Receipts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-4 py-unit-3 rounded-lg text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+<!-- Active 'Users' tab mocked for context -->
+<a class="flex items-center gap-unit-3 px-unit-4 py-unit-3 rounded-lg bg-secondary-container text-primary font-bold border-r-4 border-primary mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps">User Management</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar Mockup -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] z-40 bg-surface-container-lowest border-b border-border-subtle flex justify-between items-center h-16 px-margin-desktop ml-[240px]">
+<div class="flex items-center bg-surface-container-low rounded-lg px-unit-3 py-unit-2 w-96 border border-border-subtle focus-within:ring-2 focus-within:ring-primary">
+<span class="material-symbols-outlined text-on-surface-variant mr-unit-2" data-icon="search">search</span>
+<input class="bg-transparent border-none outline-none font-body-base text-body-base text-on-surface w-full placeholder-on-surface-variant" disabled="" placeholder="Search users..." type="text">
+</div>
+<div class="flex items-center gap-unit-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<img class="w-8 h-8 rounded-full border border-border-subtle" data-alt="A professional headshot portrait of an industrial logistics manager, captured in bright, neutral lighting suitable for a corporate profile avatar. The individual wears professional attire against a clean, light gray background, conveying a sense of reliability, systematic organization, and modern warehouse management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBcSpybknLK9DKorq78vXEDb-gbIwLZ-5p26Tg9jO4scgYLtFYJWZoOq7yMHe3ae5-5tyk5_eVE6KwZuO2wourB7RKwWfD13PNYzlgV8i2r0yzCGxhxIS2fOwC1a-AzdKsUp0bH-b659nxv8OT5qQdavydCaFwylZHhWLkxLbD8-RguAi_7iEqOup_zAHFW5qU4-BYbfdW2uzazU9iYzGZdzTOU-spQsJi1JbInMQlr2-QsDztqVNSmw">
+</div>
+</header>
+<!-- Main Content Area Mockup -->
+<main class="ml-[240px] mt-16 p-margin-desktop w-full h-[calc(100vh-64px)] overflow-hidden">
+<div class="mb-unit-6 flex justify-between items-end">
+<div>
+<h2 class="font-page-title text-page-title text-on-surface">User Management</h2>
+<p class="font-body-base text-body-base text-on-surface-variant">Manage system access and roles.</p>
+</div>
+<button class="bg-primary text-on-primary font-body-base text-body-base px-unit-4 py-unit-2 rounded flex items-center gap-unit-2 opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    Add User
+                </button>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle">
+<th class="py-unit-2 px-unit-4 font-label-caps text-label-caps text-on-surface-variant">Name</th>
+<th class="py-unit-2 px-unit-4 font-label-caps text-label-caps text-on-surface-variant">Role</th>
+<th class="py-unit-2 px-unit-4 font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="py-unit-2 px-unit-4 font-label-caps text-label-caps text-on-surface-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-subtle">
+<td class="py-unit-2 px-unit-4 font-body-base text-body-base">Jane Doe</td>
+<td class="py-unit-2 px-unit-4 font-body-base text-body-base">Warehouse Manager</td>
+<td class="py-unit-2 px-unit-4"><span class="bg-success/10 text-success font-label-caps text-label-caps px-2 py-1 rounded">Active</span></td>
+<td class="py-unit-2 px-unit-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="edit">edit</span>
+<span class="material-symbols-outlined text-danger" data-icon="person_remove">person_remove</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle bg-surface-alt">
+<td class="py-unit-2 px-unit-4 font-body-base text-body-base">John Smith</td>
+<td class="py-unit-2 px-unit-4 font-body-base text-body-base">Inventory Clerk</td>
+<td class="py-unit-2 px-unit-4"><span class="bg-success/10 text-success font-label-caps text-label-caps px-2 py-1 rounded">Active</span></td>
+<td class="py-unit-2 px-unit-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="edit">edit</span>
+<span class="material-symbols-outlined text-danger" data-icon="person_remove">person_remove</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-[#0f172a]/50 backdrop-blur-sm flex items-center justify-center p-4">
+<!-- Confirmation Dialog -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_6px_-1px_rgb(0,0,0,0.1)] border border-[#CBD5E1] w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<div class="p-unit-6">
+<div class="flex items-start gap-unit-4 mb-unit-4">
+<div class="bg-error-container text-on-error-container p-unit-2 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<h3 class="font-section-title text-section-title text-on-surface mb-unit-2">Deactivate User Account</h3>
+<p class="font-body-base text-body-base text-on-surface-variant">
+                            Are you sure you want to deactivate the account for <strong class="font-medium text-on-surface">John Smith</strong>? Deactivated users will no longer be able to log in to the system.
+                        </p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low px-unit-6 py-unit-4 border-t border-border-subtle flex justify-end gap-unit-3">
+<button class="px-unit-4 py-unit-2 font-body-base text-body-base font-medium rounded text-on-surface-variant hover:bg-surface-variant transition-colors border border-transparent" type="button">
+                    Cancel
+                </button>
+<button class="px-unit-4 py-unit-2 font-body-base text-body-base font-medium rounded bg-danger text-on-primary hover:bg-danger/90 transition-colors shadow-sm flex items-center gap-unit-2" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_off">person_off</span>
+                    Deactivate
+                </button>
+</div>
+</div>
+</div>
+</body></html>

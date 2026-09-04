@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Create Import Receipt - Precision Logistics</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Design System -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d3e4fe",
+                    "on-surface": "#191c1e",
+                    "primary-fixed": "#dde1ff",
+                    "danger": "#E11D48",
+                    "surface-dim": "#d8dadc",
+                    "surface-tint": "#3755c3",
+                    "tertiary-fixed": "#dae2fd",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "success": "#059669",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "inverse-surface": "#2d3133",
+                    "primary-container": "#1e40af",
+                    "on-background": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary-container": "#434b60",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "primary": "#00288e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#173bab",
+                    "tertiary": "#2d3449",
+                    "outline": "#757684",
+                    "secondary-container": "#d0e1fb",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "outline-variant": "#c4c5d5",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-bright": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#444653",
+                    "border-subtle": "#E2E8F0",
+                    "on-primary-fixed": "#001453",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-container": "#b4bbd5",
+                    "inverse-primary": "#b8c4ff",
+                    "background": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "secondary": "#505f76",
+                    "surface-container": "#eceef0",
+                    "on-secondary-container": "#54647a",
+                    "surface-variant": "#e0e3e5",
+                    "on-tertiary-fixed": "#131b2e",
+                    "on-primary-container": "#a8b8ff",
+                    "warning": "#D97706",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#0b1c30",
+                    "surface-alt": "#F1F5F9",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit-3": "12px",
+                    "unit-2": "8px",
+                    "gutter": "16px",
+                    "unit-6": "24px",
+                    "margin-mobile": "16px",
+                    "unit-1": "4px",
+                    "unit-4": "16px",
+                    "base": "4px",
+                    "margin-desktop": "24px",
+                    "unit-8": "32px"
+            },
+            "fontFamily": {
+                    "body-base": [
+                            "Inter", "sans-serif"
+                    ],
+                    "card-title": [
+                            "Inter", "sans-serif"
+                    ],
+                    "page-title": [
+                            "Inter", "sans-serif"
+                    ],
+                    "label-caps": [
+                            "Inter", "sans-serif"
+                    ],
+                    "body-sm": [
+                            "Inter", "sans-serif"
+                    ],
+                    "section-title": [
+                            "Inter", "sans-serif"
+                    ],
+                    "data-mono": [
+                            "jetbrainsMono", "monospace"
+                    ]
+            },
+            "fontSize": {
+                    "body-base": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "card-title": [
+                            "16px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "page-title": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-caps": [
+                            "11px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "section-title": [
+                            "18px",
+                            {
+                                    "lineHeight": "24px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "data-mono": [
+                            "13px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for high-density tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f7f9fb; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c5d5; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #757684; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base text-body-base antialiased flex overflow-hidden h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar Component -->
+<nav class="w-60 h-screen fixed left-0 top-0 border-r border-outline-variant bg-surface-container-low flex flex-col h-full py-unit-4 px-unit-2 z-20">
+<!-- Brand Header -->
+<div class="px-unit-4 mb-unit-8 flex flex-col gap-1">
+<h1 class="text-section-title font-section-title text-primary tracking-tight font-bold">Precision Logistics</h1>
+<span class="text-body-sm font-body-sm text-secondary">Warehouse Management</span>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col gap-1 flex-1">
+<!-- Dashboard (Inactive) -->
+<li>
+<a class="flex items-center gap-unit-3 px-unit-4 py-2 rounded text-secondary hover:bg-surface-container-high transition-colors duration-150 text-body-base font-body-base" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<!-- Parts (Inactive) -->
+<li>
+<a class="flex items-center gap-unit-3 px-unit-4 py-2 rounded text-secondary hover:bg-surface-container-high transition-colors duration-150 text-body-base font-body-base" href="#">
+<span class="material-symbols-outlined text-[20px]">settings_input_component</span>
+<span>Parts</span>
+</a>
+</li>
+<!-- Warehouses (Inactive) -->
+<li>
+<a class="flex items-center gap-unit-3 px-unit-4 py-2 rounded text-secondary hover:bg-surface-container-high transition-colors duration-150 text-body-base font-body-base" href="#">
+<span class="material-symbols-outlined text-[20px]">warehouse</span>
+<span>Warehouses</span>
+</a>
+</li>
+<!-- Inventory (Inactive) -->
+<li>
+<a class="flex items-center gap-unit-3 px-unit-4 py-2 rounded text-secondary hover:bg-surface-container-high transition-colors duration-150 text-body-base font-body-base" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span>Inventory</span>
+</a>
+</li>
+<!-- Receipts (Active - Matches Intent of "Import Receipts") -->
+<li>
+<a class="flex items-center gap-unit-3 px-unit-4 py-2 rounded bg-secondary-container text-on-secondary-container font-semibold opacity-90 transition-all duration-100 text-body-base font-body-base" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>Receipts</span>
+</a>
+</li>
+<!-- Reports (Inactive) -->
+<li>
+<a class="flex items-center gap-unit-3 px-unit-4 py-2 rounded text-secondary hover:bg-surface-container-high transition-colors duration-150 text-body-base font-body-base" href="#">
+<span class="material-symbols-outlined text-[20px]">assessment</span>
+<span>Reports</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopNavBar Component -->
+<header class="h-14 fixed top-0 right-0 z-10 border-b border-outline-variant bg-surface flex justify-between items-center px-gutter w-[calc(100%-240px)] ml-[240px]">
+<!-- Search Bar -->
+<div class="flex-1 max-w-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span>
+<input class="w-full h-9 pl-10 pr-4 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-body-base font-body-base placeholder:text-secondary" placeholder="Search..." type="text">
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-unit-4">
+<button class="text-secondary hover:bg-surface-container-low transition-colors duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-secondary hover:bg-surface-container-low transition-colors duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A small circular avatar image showing a professional male wearing a blue logistics uniform shirt, shot with bright studio lighting against a clean white background, high quality, corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLjeL6xhJc-Q_N9XijtmZyKj2T0c4PJHm5OudzkyRcDFMW2fZfaNnW9YrsQMvn6dHjaA3yiJO8GyNjDO1EW7xRZx0ETu5a0s-qUkPV8vAsz_HM_Qi3q4PcRX9XI4MlMANWsQSee8GakGqhRfDblbngbQ25ZY4F-6EuXxWSPpk0t7vUyYzYenKnJGm4B6_koNkWUVQwneSuoN6uZOG1uhgm7ErrPLjLioc-yUDJwHI1H3HCk_0e0EINzA">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[240px] mt-[56px] h-[calc(100vh-56px)] overflow-y-auto bg-background p-unit-6 flex flex-col gap-unit-6">
+<!-- Breadcrumb & Title Area -->
+<div class="flex flex-col gap-2">
+<nav class="flex items-center text-body-sm font-body-sm text-secondary">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px] mx-1">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Import Receipts</a>
+<span class="material-symbols-outlined text-[14px] mx-1">chevron_right</span>
+<span class="text-on-surface">Create Import Receipt</span>
+</nav>
+<div class="flex items-center justify-between">
+<h2 class="text-page-title font-page-title text-on-surface">Create Import Receipt</h2>
+<!-- Status Badge (Draft) -->
+<div class="flex items-center gap-2 bg-surface-variant px-3 py-1 rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">Draft</span>
+</div>
+</div>
+</div>
+<!-- Section 1: Receipt Information -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-lg p-unit-4 shadow-sm flex flex-col gap-unit-4">
+<h3 class="text-card-title font-card-title text-on-surface border-b border-outline-variant pb-2">Receipt Information</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-unit-4">
+<!-- Receipt Code (Read-only) -->
+<div class="flex flex-col gap-1">
+<label class="text-label-caps font-label-caps text-secondary uppercase">Receipt Code</label>
+<input class="h-10 px-3 bg-surface-container-low border border-outline-variant rounded text-data-mono font-data-mono text-secondary cursor-not-allowed" readonly="" type="text" value="RC-20231027-0042">
+</div>
+<!-- Warehouse (Dropdown) -->
+<div class="flex flex-col gap-1">
+<label class="text-label-caps font-label-caps text-secondary uppercase">Warehouse <span class="text-danger">*</span></label>
+<select class="h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded text-body-base font-body-base text-on-surface focus:ring-2 focus:ring-primary focus:border-primary">
+<option value="">Select Warehouse...</option>
+<option selected="" value="w1">Main Distribution Center (MDC)</option>
+<option value="w2">East Regional Hub</option>
+<option value="w3">Overflow Facility B</option>
+</select>
+</div>
+<!-- Import Date -->
+<div class="flex flex-col gap-1">
+<label class="text-label-caps font-label-caps text-secondary uppercase">Import Date <span class="text-danger">*</span></label>
+<div class="relative">
+<input class="w-full h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded text-body-base font-body-base text-on-surface focus:ring-2 focus:ring-primary focus:border-primary" type="date" value="2023-10-27">
+</div>
+</div>
+<!-- Created By (Read-only) -->
+<div class="flex flex-col gap-1">
+<label class="text-label-caps font-label-caps text-secondary uppercase">Created By</label>
+<div class="h-10 px-3 bg-surface-container-low border border-outline-variant rounded flex items-center gap-2 cursor-not-allowed">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="text-body-base font-body-base text-secondary">Alex Mercer</span>
+</div>
+</div>
+<!-- Note (Spans full width on larger screens) -->
+<div class="flex flex-col gap-1 md:col-span-3 xl:col-span-4">
+<label class="text-label-caps font-label-caps text-secondary uppercase">Note</label>
+<textarea class="p-3 bg-surface-container-lowest border border-outline-variant rounded text-body-base font-body-base text-on-surface focus:ring-2 focus:ring-primary focus:border-primary resize-y" placeholder="Optional notes regarding this import..." rows="2"></textarea>
+</div>
+</div>
+</section>
+<!-- Section 2: Import Items -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-lg shadow-sm flex flex-col flex-1 overflow-hidden">
+<!-- Table Header Actions -->
+<div class="p-unit-4 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="text-card-title font-card-title text-on-surface">Import Items</h3>
+<button class="bg-primary-container text-on-primary hover:bg-primary transition-colors flex items-center gap-2 px-4 py-2 rounded text-body-base font-body-base font-medium">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add Part
+                </button>
+</div>
+<!-- Table Container (Scrollable) -->
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead class="bg-surface sticky top-0 z-10 border-b-2 border-outline-variant shadow-sm">
+<tr>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase w-12 text-center">#</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase min-w-[250px]">Part</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase w-32">Part Code</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase w-28 text-right">Quantity</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase w-20">Unit</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase w-36 text-right">Unit Price ($)</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase w-36 text-right">Total ($)</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase">Note</th>
+<th class="py-2 px-unit-3 text-label-caps font-label-caps text-secondary uppercase w-16 text-center">Action</th>
+</tr>
+</thead>
+<tbody class="text-body-base font-body-base">
+<!-- Row 1 (Zebra Light) -->
+<tr class="bg-surface-container-lowest border-b border-outline-variant hover:bg-surface-alt transition-colors group">
+<td class="py-1 px-unit-3 text-secondary text-center text-body-sm">1</td>
+<td class="py-1 px-unit-3">
+<div class="relative w-full">
+<select class="w-full h-8 px-2 py-0 bg-transparent border-transparent hover:border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm font-body-base text-on-surface">
+<option selected="" value="p1">Alternator - Heavy Duty 24V</option>
+<option value="p2">Brake Pad Set - Front</option>
+</select>
+</div>
+</td>
+<td class="py-1 px-unit-3 text-data-mono font-data-mono text-secondary">ALT-HD24-001</td>
+<td class="py-1 px-unit-3">
+<input class="w-full h-8 px-2 text-right bg-transparent border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm font-data-mono" min="1" type="number" value="50">
+</td>
+<td class="py-1 px-unit-3 text-secondary text-body-sm">pcs</td>
+<td class="py-1 px-unit-3">
+<input class="w-full h-8 px-2 text-right bg-transparent border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm font-data-mono" step="0.01" type="number" value="125.50">
+</td>
+<td class="py-1 px-unit-3 text-right text-data-mono font-data-mono font-medium text-on-surface bg-surface-container-low group-hover:bg-transparent transition-colors">
+                                6,275.00
+                            </td>
+<td class="py-1 px-unit-3">
+<input class="w-full h-8 px-2 bg-transparent border-transparent hover:border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm placeholder:text-outline" placeholder="Optional" type="text">
+</td>
+<td class="py-1 px-unit-3 text-center">
+<button class="text-secondary hover:text-danger hover:bg-error-container p-1 rounded transition-colors" title="Remove Item">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 (Zebra Dark) -->
+<tr class="bg-surface-bright border-b border-outline-variant hover:bg-surface-alt transition-colors group">
+<td class="py-1 px-unit-3 text-secondary text-center text-body-sm">2</td>
+<td class="py-1 px-unit-3">
+<div class="relative w-full">
+<select class="w-full h-8 px-2 py-0 bg-transparent border-transparent hover:border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm font-body-base text-on-surface">
+<option value="p1">Alternator - Heavy Duty 24V</option>
+<option selected="" value="p2">Synthetic Motor Oil 5W-30 (Drum)</option>
+</select>
+</div>
+</td>
+<td class="py-1 px-unit-3 text-data-mono font-data-mono text-secondary">OIL-5W30-DRM</td>
+<td class="py-1 px-unit-3">
+<input class="w-full h-8 px-2 text-right bg-transparent border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm font-data-mono" min="1" type="number" value="12">
+</td>
+<td class="py-1 px-unit-3 text-secondary text-body-sm">drum</td>
+<td class="py-1 px-unit-3">
+<input class="w-full h-8 px-2 text-right bg-transparent border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm font-data-mono" step="0.01" type="number" value="450.00">
+</td>
+<td class="py-1 px-unit-3 text-right text-data-mono font-data-mono font-medium text-on-surface bg-surface-container-low group-hover:bg-transparent transition-colors">
+                                5,400.00
+                            </td>
+<td class="py-1 px-unit-3">
+<input class="w-full h-8 px-2 bg-transparent border-transparent hover:border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary text-body-sm placeholder:text-outline" placeholder="Optional" type="text" value="Urgent restock">
+</td>
+<td class="py-1 px-unit-3 text-center">
+<button class="text-secondary hover:text-danger hover:bg-error-container p-1 rounded transition-colors" title="Remove Item">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Empty State / Add new row trigger area (simulated) -->
+<tr class="bg-surface-container-lowest border-b border-outline-variant border-dashed group cursor-pointer hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-unit-3 text-center text-primary font-medium text-body-sm flex items-center justify-center gap-2" colspan="9">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                                Click to add another part
+                            </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Summary & Actions inside the card to keep it cohesive -->
+<div class="bg-surface p-unit-4 border-t border-outline-variant flex flex-col gap-unit-6 mt-auto">
+<!-- Totals Area -->
+<div class="flex justify-end">
+<div class="w-full max-w-sm bg-surface-container-lowest border border-border-subtle rounded p-unit-4 flex flex-col gap-2 shadow-sm">
+<div class="flex justify-between items-center text-body-sm font-body-base text-secondary">
+<span>Total Items:</span>
+<span class="font-data-mono text-on-surface">2</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-base text-secondary">
+<span>Total Quantity:</span>
+<span class="font-data-mono text-on-surface">62</span>
+</div>
+<div class="h-px w-full bg-outline-variant my-1"></div>
+<div class="flex justify-between items-center">
+<span class="text-card-title font-card-title text-on-surface">Grand Total:</span>
+<span class="text-section-title font-data-mono font-bold text-primary">$ 11,675.00</span>
+</div>
+</div>
+</div>
+<!-- Page Actions -->
+<div class="flex items-center justify-end gap-unit-3 pt-unit-4 border-t border-outline-variant">
+<button class="px-6 py-2 rounded border border-outline text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors text-body-base font-body-base font-medium">
+                        Cancel
+                    </button>
+<button class="px-6 py-2 rounded bg-secondary-container text-on-secondary-container hover:bg-surface-variant transition-colors text-body-base font-body-base font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save Draft
+                    </button>
+<button class="px-8 py-2 rounded bg-primary-container text-on-primary hover:bg-primary transition-colors text-body-base font-body-base font-medium shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                        Complete Import
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

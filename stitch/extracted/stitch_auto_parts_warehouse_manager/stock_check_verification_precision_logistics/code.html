@@ -1,0 +1,555 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Precision Logistics - Stock Check</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config Injection -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#dae2fd",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#00288e",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-surface-variant": "#444653",
+                      "error": "#ba1a1a",
+                      "on-background": "#191c1e",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-surface": "#191c1e",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "danger": "#E11D48",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "on-primary-container": "#a8b8ff",
+                      "inverse-primary": "#b8c4ff",
+                      "tertiary-container": "#434b60",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "on-tertiary-container": "#b4bbd5",
+                      "background": "#f7f9fb",
+                      "surface-container": "#eceef0",
+                      "outline-variant": "#c4c5d5",
+                      "surface-alt": "#F1F5F9",
+                      "on-secondary": "#ffffff",
+                      "warning": "#D97706",
+                      "outline": "#757684",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#dde1ff",
+                      "secondary-container": "#d0e1fb",
+                      "on-tertiary-fixed": "#131b2e",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary": "#2d3449",
+                      "on-primary-fixed": "#001453",
+                      "secondary": "#505f76",
+                      "on-error-container": "#93000a",
+                      "surface": "#f7f9fb",
+                      "success": "#059669",
+                      "surface-tint": "#3755c3",
+                      "surface-bright": "#f7f9fb",
+                      "surface-container-low": "#f2f4f6",
+                      "primary-container": "#1e40af",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "on-secondary-container": "#54647a",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-dim": "#d8dadc",
+                      "on-secondary-fixed": "#0b1c30",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-primary-fixed-variant": "#173bab",
+                      "surface-container-high": "#e6e8ea",
+                      "border-subtle": "#E2E8F0"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "unit-2": "8px",
+                      "unit-8": "32px",
+                      "unit-4": "16px",
+                      "base": "4px",
+                      "margin-desktop": "24px",
+                      "unit-1": "4px",
+                      "unit-6": "24px",
+                      "unit-3": "12px"
+              },
+              "fontFamily": {
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "card-title": [
+                              "Inter"
+                      ],
+                      "body-base": [
+                              "Inter"
+                      ],
+                      "page-title": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "data-mono": [
+                              "jetbrainsMono"
+                      ]
+              },
+              "fontSize": {
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "card-title": [
+                              "16px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-base": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "page-title": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .table-zebra-row:nth-child(even) {
+                @apply bg-surface-alt;
+            }
+            .table-zebra-row:nth-child(odd) {
+                @apply bg-surface-container-lowest;
+            }
+            
+            /* Interactive rows */
+            .table-row-interactive {
+                 @apply transition-colors hover:bg-surface-container-low cursor-default;
+            }
+            
+            /* Density */
+            .dense-cell {
+                @apply py-2 px-3;
+            }
+            
+            /* Status Badges */
+            .badge-success {
+                @apply bg-success/10 text-success border border-success/20;
+            }
+            .badge-warning {
+                @apply bg-warning/10 text-warning border border-warning/20;
+            }
+            .badge-danger {
+                @apply bg-danger/10 text-danger border border-danger/20;
+            }
+            
+            /* Form inputs */
+            .form-input-dense {
+                @apply block w-full rounded border-outline-variant py-1.5 px-2 text-body-base font-body-base text-on-surface shadow-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base text-body-base antialiased h-screen overflow-hidden flex selection:bg-primary/20 selection:text-primary">
+<!-- JSON: SideNavBar Component -->
+<nav class="hidden md:flex flex-col h-full py-unit-4 bg-surface-container-lowest border-r border-outline-variant w-[240px] flex-shrink-0">
+<!-- Header -->
+<div class="px-unit-4 mb-unit-6 flex items-center gap-unit-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="deployed_code" style="font-variation-settings: 'FILL' 1;">deployed_code</span>
+</div>
+<div>
+<h1 class="font-section-title text-section-title font-bold text-primary truncate">Precision Logistics</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Enterprise v2.1</p>
+</div>
+</div>
+<!-- Main Nav Links -->
+<div class="flex-1 overflow-y-auto px-unit-2 space-y-1">
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded text-secondary hover:bg-surface-container transition-all duration-150 ease-in-out font-label-caps text-label-caps group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-surface" data-icon="dashboard">dashboard</span>
+<span class="mt-px group-hover:text-on-surface">Dashboard</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded text-secondary hover:bg-surface-container transition-all duration-150 ease-in-out font-label-caps text-label-caps group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-surface" data-icon="settings_input_component">settings_input_component</span>
+<span class="mt-px group-hover:text-on-surface">Parts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded text-secondary hover:bg-surface-container transition-all duration-150 ease-in-out font-label-caps text-label-caps group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-surface" data-icon="warehouse">warehouse</span>
+<span class="mt-px group-hover:text-on-surface">Warehouses</span>
+</a>
+<!-- Active Tab Logic: Intent Fallback -> Inventory maps to Stock Check -->
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-bold border-r-4 border-primary transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="mt-px">Inventory</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded text-secondary hover:bg-surface-container transition-all duration-150 ease-in-out font-label-caps text-label-caps group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-surface" data-icon="receipt_long">receipt_long</span>
+<span class="mt-px group-hover:text-on-surface">Receipts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded text-secondary hover:bg-surface-container transition-all duration-150 ease-in-out font-label-caps text-label-caps group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-surface" data-icon="assessment">assessment</span>
+<span class="mt-px group-hover:text-on-surface">Reports</span>
+</a>
+</div>
+<!-- Footer Nav Links -->
+<div class="px-unit-2 pt-unit-4 border-t border-border-subtle mt-auto space-y-1">
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded text-secondary hover:bg-surface-container transition-all duration-150 ease-in-out font-label-caps text-label-caps group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-surface" data-icon="help">help</span>
+<span class="mt-px group-hover:text-on-surface">Support</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2 rounded text-secondary hover:bg-surface-container transition-all duration-150 ease-in-out font-label-caps text-label-caps group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-surface" data-icon="logout">logout</span>
+<span class="mt-px group-hover:text-on-surface">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background">
+<!-- JSON: TopNavBar Component -->
+<header class="w-full h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-desktop flex-shrink-0">
+<!-- Search / Left -->
+<div class="flex-1 max-w-md">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-outline-variant rounded bg-surface-container-lowest text-body-base font-body-base placeholder-outline focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors h-10" placeholder="Search inventory, parts..." type="text">
+</div>
+</div>
+<!-- Actions / Right -->
+<div class="flex items-center gap-unit-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors relative cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-danger rounded-full border border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80 hidden sm:block">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-px bg-border-subtle mx-2 hidden sm:block"></div>
+<button class="flex items-center gap-2 hover:bg-surface-container-low p-1 pr-2 rounded transition-colors cursor-pointer active:opacity-80">
+<img alt="Warehouse Manager Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A clean, professional headshot of a warehouse manager in a light industrial setting, wearing a high-visibility vest over a crisp button-down shirt. The lighting is bright and modern, evoking a sense of reliability and corporate efficiency in a light-mode aesthetic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG0t0QNvq1EOt0XoIYw28Pp7N8ZW4hWyvRQcuvGI4jTAYSrUC-wjWLLATuh1Omemc84iElDuuB1FPjt91iPcsdaD_VKWuC3LgySFH1un4YT01K8M9cxe30jGZVHqkqJIexNRvfAfBcbnpPCKEwfQAps7lNjSJpQVwpNvr1aDT8822y56_Oe6KRFBO2xz6xFUDbzODp6A6ZdOigGofXs_Mk8s3WQptyrouFaMuFCjJtUoMb38kkQ1F0JA">
+<div class="hidden sm:flex flex-col items-start">
+<span class="text-body-sm font-card-title text-on-surface leading-tight">J. Doe</span>
+<span class="text-[10px] text-on-surface-variant leading-tight">Manager</span>
+</div>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 overflow-auto p-margin-desktop">
+<!-- Breadcrumb & Header -->
+<div class="mb-unit-6">
+<nav aria-label="Breadcrumb" class="flex text-body-sm text-on-surface-variant mb-2 font-body-base">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><span class="material-symbols-outlined text-[14px] mx-1">chevron_right</span></li>
+<li><a class="hover:text-primary transition-colors" href="#">Inventory</a></li>
+<li><span class="material-symbols-outlined text-[14px] mx-1">chevron_right</span></li>
+<li aria-current="page" class="text-on-surface font-medium">Stock Check</li>
+</ol>
+</nav>
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<h2 class="font-page-title text-page-title text-on-surface">Stock Check</h2>
+<p class="font-body-base text-body-base text-on-surface-variant mt-1">Verify physical inventory counts against system records.</p>
+</div>
+<!-- Status Indicator for the whole check -->
+<div class="flex items-center gap-2 text-body-sm bg-surface-container-lowest border border-border-subtle px-3 py-1.5 rounded">
+<span class="w-2 h-2 rounded-full bg-warning animate-pulse"></span>
+<span class="font-medium text-on-surface">Draft Mode</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-unit-6">
+<!-- Section 1: Information (Left Column on Desktop) -->
+<div class="xl:col-span-4 space-y-unit-6">
+<!-- Info Card -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-unit-4 shadow-sm">
+<h3 class="font-card-title text-card-title text-on-surface mb-unit-4 flex items-center gap-2 border-b border-border-subtle pb-3">
+<span class="material-symbols-outlined text-outline" data-icon="info">info</span>
+                            Check Details
+                        </h3>
+<div class="space-y-4">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1" for="warehouse">Warehouse</label>
+<select class="form-input-dense bg-surface-alt" id="warehouse" name="warehouse">
+<option selected="" value="w1">WH-A (Main Fulfillment)</option>
+<option value="w2">WH-B (Overflow)</option>
+<option value="w3">WH-C (Cold Storage)</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1" for="check-date">Date</label>
+<div class="relative">
+<input class="form-input-dense pr-8" id="check-date" name="check-date" type="date" value="2023-10-27">
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1" for="performed-by">Performed By</label>
+<input class="form-input-dense bg-surface-container-low text-on-surface-variant cursor-not-allowed" id="performed-by" name="performed-by" readonly="" type="text" value="J. Doe">
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1" for="check-note">General Note</label>
+<textarea class="form-input-dense resize-none" id="check-note" name="check-note" placeholder="Enter reason for stock check..." rows="3"></textarea>
+</div>
+</div>
+</div>
+<!-- Summary Card (Progress) -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-unit-4 shadow-sm flex flex-col justify-between hidden xl:flex">
+<div>
+<h3 class="font-card-title text-card-title text-on-surface mb-2">Progress Summary</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">4 of 142 items verified</p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-body-sm">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-success"></span>Matched</span>
+<span class="font-data-mono font-medium">2</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-warning"></span>Surplus</span>
+<span class="font-data-mono font-medium">1</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-danger"></span>Shortage</span>
+<span class="font-data-mono font-medium">1</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-border-subtle">
+<div class="w-full bg-surface-variant rounded-full h-1.5 overflow-hidden flex">
+<div class="bg-success h-1.5" style="width: 50%"></div>
+<div class="bg-warning h-1.5" style="width: 25%"></div>
+<div class="bg-danger h-1.5" style="width: 25%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Data Table (Right Column on Desktop) -->
+<div class="xl:col-span-8 flex flex-col h-[calc(100vh-200px)] xl:h-auto border border-border-subtle rounded-lg bg-surface-container-lowest shadow-sm overflow-hidden relative">
+<!-- Table Toolbar -->
+<div class="px-3 py-2 border-b border-border-subtle bg-surface flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="filter_list">filter_list</span>
+<select class="text-body-sm font-body-base bg-transparent border-none py-1 pl-1 pr-6 focus:ring-0 text-on-surface-variant cursor-pointer">
+<option>All Items</option>
+<option>Discrepancies Only</option>
+<option>Unverified</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-on-surface-variant">Zone Aisle 4</span>
+</div>
+</div>
+<!-- Table Container -->
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="sticky top-0 bg-surface z-10 border-b border-border-subtle shadow-[0_1px_0_0_#E2E8F0]">
+<tr>
+<th class="dense-cell font-label-caps text-label-caps text-on-surface-variant font-semibold w-24">Part Code</th>
+<th class="dense-cell font-label-caps text-label-caps text-on-surface-variant font-semibold">Part Name</th>
+<th class="dense-cell font-label-caps text-label-caps text-on-surface-variant font-semibold text-right w-24">System Qty</th>
+<th class="dense-cell font-label-caps text-label-caps text-on-surface-variant font-semibold w-28 px-1">Actual Qty</th>
+<th class="dense-cell font-label-caps text-label-caps text-on-surface-variant font-semibold text-right w-20">Diff</th>
+<th class="dense-cell font-label-caps text-label-caps text-on-surface-variant font-semibold text-center w-28">Status</th>
+<th class="dense-cell font-label-caps text-label-caps text-on-surface-variant font-semibold w-48">Note</th>
+</tr>
+</thead>
+<tbody class="font-body-sm">
+<!-- Row 1: Matched -->
+<tr class="table-zebra-row table-row-interactive h-10 border-b border-border-subtle/50 last:border-b-0 group">
+<td class="dense-cell font-data-mono text-on-surface-variant">PN-1042</td>
+<td class="dense-cell font-medium text-on-surface truncate max-w-[200px]">Alternator Assembly V8</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">42</td>
+<td class="dense-cell px-1">
+<input class="w-full h-7 rounded border-outline-variant px-2 text-right font-data-mono text-body-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors bg-surface-container-lowest" type="number" value="42">
+</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">0</td>
+<td class="dense-cell text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full font-label-caps badge-success w-20">
+                                            Matched
+                                        </span>
+</td>
+<td class="dense-cell">
+<input class="w-full h-7 rounded border-transparent bg-transparent px-2 text-body-sm placeholder-outline focus:border-outline-variant focus:bg-surface-container-lowest transition-colors group-hover:border-outline-variant/30" placeholder="Add note..." type="text">
+</td>
+</tr>
+<!-- Row 2: Shortage (Highlighted) -->
+<tr class="table-zebra-row table-row-interactive h-10 border-b border-border-subtle/50 last:border-b-0 group bg-danger/5 hover:bg-danger/10">
+<td class="dense-cell font-data-mono text-on-surface-variant">PN-2109</td>
+<td class="dense-cell font-medium text-on-surface truncate max-w-[200px]">Brake Caliper L</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">115</td>
+<td class="dense-cell px-1">
+<input class="w-full h-7 rounded border-danger px-2 text-right font-data-mono text-body-sm focus:border-danger focus:ring-1 focus:ring-danger focus:outline-none transition-colors bg-surface-container-lowest" type="number" value="112">
+</td>
+<td class="dense-cell font-data-mono text-right text-danger font-medium">-3</td>
+<td class="dense-cell text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full font-label-caps badge-danger w-20">
+                                            Shortage
+                                        </span>
+</td>
+<td class="dense-cell">
+<input class="w-full h-7 rounded border-outline-variant/30 bg-surface-container-lowest px-2 text-body-sm text-danger placeholder-outline focus:border-outline-variant transition-colors" type="text" value="Box opened, parts missing">
+</td>
+</tr>
+<!-- Row 3: Matched -->
+<tr class="table-zebra-row table-row-interactive h-10 border-b border-border-subtle/50 last:border-b-0 group">
+<td class="dense-cell font-data-mono text-on-surface-variant">PN-2110</td>
+<td class="dense-cell font-medium text-on-surface truncate max-w-[200px]">Brake Caliper R</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">115</td>
+<td class="dense-cell px-1">
+<input class="w-full h-7 rounded border-outline-variant px-2 text-right font-data-mono text-body-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors bg-surface-container-lowest" type="number" value="115">
+</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">0</td>
+<td class="dense-cell text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full font-label-caps badge-success w-20">
+                                            Matched
+                                        </span>
+</td>
+<td class="dense-cell">
+<input class="w-full h-7 rounded border-transparent bg-transparent px-2 text-body-sm placeholder-outline focus:border-outline-variant focus:bg-surface-container-lowest transition-colors group-hover:border-outline-variant/30" placeholder="Add note..." type="text">
+</td>
+</tr>
+<!-- Row 4: Surplus (Highlighted) -->
+<tr class="table-zebra-row table-row-interactive h-10 border-b border-border-subtle/50 last:border-b-0 group bg-warning/5 hover:bg-warning/10">
+<td class="dense-cell font-data-mono text-on-surface-variant">PN-3351</td>
+<td class="dense-cell font-medium text-on-surface truncate max-w-[200px]">Spark Plug Set Platinum</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">80</td>
+<td class="dense-cell px-1">
+<input class="w-full h-7 rounded border-warning px-2 text-right font-data-mono text-body-sm focus:border-warning focus:ring-1 focus:ring-warning focus:outline-none transition-colors bg-surface-container-lowest" type="number" value="84">
+</td>
+<td class="dense-cell font-data-mono text-right text-warning font-medium">+4</td>
+<td class="dense-cell text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full font-label-caps badge-warning w-20">
+                                            Surplus
+                                        </span>
+</td>
+<td class="dense-cell">
+<input class="w-full h-7 rounded border-outline-variant/30 bg-surface-container-lowest px-2 text-body-sm text-warning placeholder-outline focus:border-outline-variant transition-colors" type="text" value="Found in wrong bin">
+</td>
+</tr>
+<!-- Empty Rows for visual density -->
+<tr class="table-zebra-row table-row-interactive h-10 border-b border-border-subtle/50 last:border-b-0">
+<td class="dense-cell font-data-mono text-on-surface-variant">PN-4001</td>
+<td class="dense-cell font-medium text-on-surface truncate max-w-[200px]">Oil Filter Standard</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">250</td>
+<td class="dense-cell px-1">
+<input class="w-full h-7 rounded border-outline-variant px-2 text-right font-data-mono text-body-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors bg-surface-container-lowest placeholder-outline" placeholder="Enter qty" type="number">
+</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">-</td>
+<td class="dense-cell text-center"></td>
+<td class="dense-cell"></td>
+</tr>
+<tr class="table-zebra-row table-row-interactive h-10 border-b border-border-subtle/50 last:border-b-0">
+<td class="dense-cell font-data-mono text-on-surface-variant">PN-4002</td>
+<td class="dense-cell font-medium text-on-surface truncate max-w-[200px]">Oil Filter Premium</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">120</td>
+<td class="dense-cell px-1">
+<input class="w-full h-7 rounded border-outline-variant px-2 text-right font-data-mono text-body-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors bg-surface-container-lowest placeholder-outline" placeholder="Enter qty" type="number">
+</td>
+<td class="dense-cell font-data-mono text-right text-on-surface-variant">-</td>
+<td class="dense-cell text-center"></td>
+<td class="dense-cell"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Actions Container -->
+<div class="mt-unit-6 sticky bottom-0 bg-surface py-4 border-t border-border-subtle flex items-center justify-between z-20">
+<button class="px-4 py-2 font-body-base text-on-surface-variant border border-transparent hover:bg-surface-container rounded transition-colors active:opacity-80" type="button">
+                    Cancel
+                </button>
+<div class="flex gap-3">
+<button class="px-4 py-2 font-body-base text-primary bg-secondary-fixed hover:bg-secondary-fixed-dim rounded border border-transparent transition-colors font-medium active:opacity-80" type="button">
+                        Save Draft
+                    </button>
+<button class="px-6 py-2 font-body-base text-on-primary bg-primary hover:bg-primary-fixed-variant rounded shadow-sm transition-colors font-medium flex items-center gap-2 active:opacity-80" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+                        Complete Stock Check
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Inline JS for simple interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const actualQtyInputs = document.querySelectorAll('input[type="number"]');
+            
+            actualQtyInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.select();
+                });
+                
+                // Simulate calculation (visual only for mockup)
+                input.addEventListener('input', function() {
+                    const row = this.closest('tr');
+                    if(row && !row.classList.contains('bg-danger/5') && !row.classList.contains('bg-warning/5')) {
+                        row.classList.add('bg-surface-container');
+                        setTimeout(() => row.classList.remove('bg-surface-container'), 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

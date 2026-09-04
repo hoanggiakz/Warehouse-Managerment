@@ -1,0 +1,434 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Quality Check Management - Precision Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-background": "#191c1e",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#d8dadc",
+                      "tertiary-container": "#434b60",
+                      "background": "#f7f9fb",
+                      "inverse-surface": "#2d3133",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-tint": "#3755c3",
+                      "on-tertiary-container": "#b4bbd5",
+                      "tertiary-fixed": "#dae2fd",
+                      "on-tertiary-fixed": "#131b2e",
+                      "on-error": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "primary": "#00288e",
+                      "on-secondary-fixed": "#0b1c30",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#54647a",
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "surface-container-low": "#f2f4f6",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#a8b8ff",
+                      "outline": "#757684",
+                      "on-surface-variant": "#444653",
+                      "surface-bright": "#f7f9fb",
+                      "warning": "#D97706",
+                      "primary-container": "#1e40af",
+                      "tertiary": "#2d3449",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e0e3e5",
+                      "on-primary-fixed": "#001453",
+                      "success": "#059669",
+                      "on-surface": "#191c1e",
+                      "on-primary-fixed-variant": "#173bab",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "secondary-container": "#d0e1fb",
+                      "outline-variant": "#c4c5d5",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "inverse-on-surface": "#eff1f3",
+                      "primary-fixed": "#dde1ff",
+                      "danger": "#E11D48",
+                      "secondary-fixed": "#d3e4fe",
+                      "surface-alt": "#F1F5F9",
+                      "border-subtle": "#E2E8F0",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "surface-container": "#eceef0",
+                      "secondary": "#505f76"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "unit-8": "32px",
+                      "unit-3": "12px",
+                      "unit-1": "4px",
+                      "unit-6": "24px",
+                      "margin-desktop": "24px",
+                      "unit-2": "8px",
+                      "base": "4px",
+                      "unit-4": "16px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-base": [
+                              "Inter"
+                      ],
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "data-mono": [
+                              "jetbrainsMono"
+                      ],
+                      "card-title": [
+                              "Inter"
+                      ],
+                      "page-title": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-base": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "card-title": [
+                              "16px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "page-title": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-base text-on-surface h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col bg-surface dark:bg-surface-dim border-r border-border-subtle dark:border-outline-variant fixed left-0 top-0 h-screen w-60 z-50">
+<!-- Header -->
+<div class="p-unit-4 border-b border-border-subtle flex items-center gap-unit-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<div>
+<h1 class="font-card-title text-card-title text-primary dark:text-inverse-primary truncate">Precision Logistics</h1>
+<p class="font-body-sm text-body-sm text-secondary truncate">Enterprise Admin</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex-1 overflow-y-auto py-unit-4 flex flex-col gap-unit-1 px-unit-2">
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base text-secondary dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base bg-secondary-container dark:bg-tertiary-container text-primary dark:text-on-primary-container font-semibold transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings_input_component">settings_input_component</span>
+<span>Parts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base text-secondary dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="warehouse">warehouse</span>
+<span>Warehouses</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base text-secondary dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base text-secondary dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+<span>Receipts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base text-secondary dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span>Reports</span>
+</a>
+</div>
+<!-- Footer Tabs -->
+<div class="p-unit-2 border-t border-border-subtle flex flex-col gap-unit-1">
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base text-secondary dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded font-body-base text-body-base text-secondary dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex justify-between items-center px-margin-desktop bg-surface dark:bg-surface-dim fixed top-0 right-0 w-[calc(100%-240px)] h-16 border-b border-border-subtle dark:border-outline-variant z-40">
+<!-- Search -->
+<div class="flex items-center w-96 relative">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-border-subtle rounded font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Search everywhere..." type="text">
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-unit-4">
+<div class="flex items-center gap-unit-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-primary transition-colors cursor-pointer active:opacity-70 duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-primary transition-colors cursor-pointer active:opacity-70 duration-150">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-primary transition-colors cursor-pointer active:opacity-70 duration-150">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+</div>
+<div class="h-8 w-px bg-border-subtle"></div>
+<button class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle cursor-pointer active:opacity-70 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A close-up, professional headshot of an individual wearing a crisp collared shirt, set against a neutral, softly lit warehouse background. The lighting is bright and clean, typical of a modern light-mode enterprise application. The color palette features neutral greys, soft blues, and crisp whites to convey stability and professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbQ9oHo6ITlz8nKtipRi5CQZEq-rRY9t7B32FyZ7jvUjkOaIYE2-HfXDh319eBCKT6YAh76zpKWYtmLydCukLCWzyjuWmYMwMDNZ0kiQMp1nse8WiNmEgsl60JYFkq2RiCzlIbskO1LGOsjs3-DoL7Vi24yvn5ENIpD8_upLB32yCoVWCYheJhSAuYnbnOxyhDW-LYPLzzlvyKp-Mra7bLWzPhaHB1UFztli_0gkGWqIam1CUoyovryg">
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-16 md:ml-60 overflow-y-auto bg-surface-container-lowest p-margin-mobile md:p-margin-desktop">
+<!-- Breadcrumb & Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-unit-4 mb-unit-6">
+<div>
+<nav class="flex items-center gap-unit-2 font-body-sm text-body-sm text-secondary mb-unit-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface">Quality Checks</span>
+</nav>
+<h2 class="font-page-title text-page-title text-on-surface">Quality Check Management</h2>
+</div>
+<button class="bg-primary-container text-on-primary font-body-base text-body-base font-semibold px-unit-4 py-unit-2 rounded flex items-center justify-center gap-unit-2 hover:bg-primary transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                Create Quality Check Record
+            </button>
+</div>
+<!-- Filters Container -->
+<div class="bg-surface border border-border-subtle rounded-lg p-unit-4 mb-unit-6 flex flex-col md:flex-row gap-unit-4">
+<!-- Search Part -->
+<div class="flex-1">
+<label class="block font-label-caps text-label-caps text-secondary mb-unit-1 uppercase">Search Part</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">search</span>
+<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-border-subtle rounded font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Part code or name..." type="text">
+</div>
+</div>
+<!-- Result Dropdown -->
+<div class="w-full md:w-64">
+<label class="block font-label-caps text-label-caps text-secondary mb-unit-1 uppercase">Result</label>
+<div class="relative">
+<select class="w-full appearance-none pl-3 pr-10 py-2 bg-surface-container-lowest border border-border-subtle rounded font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer">
+<option value="">All Results</option>
+<option value="passed">Passed</option>
+<option value="failed">Failed</option>
+<option value="partial">Partially Passed</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Range -->
+<div class="w-full md:w-72">
+<label class="block font-label-caps text-label-caps text-secondary mb-unit-1 uppercase">Date Range</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[18px]">calendar_today</span>
+<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-border-subtle rounded font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="YYYY-MM-DD to YYYY-MM-DD" type="text">
+</div>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead>
+<tr class="bg-surface border-b border-border-subtle font-label-caps text-label-caps text-secondary uppercase">
+<th class="px-unit-4 py-unit-3 font-semibold">Check ID</th>
+<th class="px-unit-4 py-unit-3 font-semibold">Part Code</th>
+<th class="px-unit-4 py-unit-3 font-semibold">Part Name</th>
+<th class="px-unit-4 py-unit-3 font-semibold">Checked By</th>
+<th class="px-unit-4 py-unit-3 font-semibold">Check Date</th>
+<th class="px-unit-4 py-unit-3 font-semibold text-right">Checked Qty</th>
+<th class="px-unit-4 py-unit-3 font-semibold text-right">Passed Qty</th>
+<th class="px-unit-4 py-unit-3 font-semibold text-right">Failed Qty</th>
+<th class="px-unit-4 py-unit-3 font-semibold">Result</th>
+<th class="px-unit-4 py-unit-3 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-base text-body-base">
+<!-- Row 1 -->
+<tr class="border-b border-border-subtle hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-secondary">QC-2401-001</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface">ALT-992-B</td>
+<td class="px-unit-4 py-unit-2 text-on-surface font-medium">Heavy Duty Alternator</td>
+<td class="px-unit-4 py-unit-2 text-secondary">S. Jenkins</td>
+<td class="px-unit-4 py-unit-2 text-secondary">2024-03-14 09:30</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">150</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">150</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-secondary text-right">0</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-success/10 text-success border border-success/20">Passed</span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-unit-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-border-subtle bg-surface hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-secondary">QC-2401-002</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface">BRK-PAD-XL</td>
+<td class="px-unit-4 py-unit-2 text-on-surface font-medium">Ceramic Brake Pads XL</td>
+<td class="px-unit-4 py-unit-2 text-secondary">M. Chen</td>
+<td class="px-unit-4 py-unit-2 text-secondary">2024-03-14 10:15</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">500</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">485</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-danger text-right">15</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-warning/10 text-warning border border-warning/20">Partially Passed</span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-unit-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-border-subtle hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-secondary">QC-2401-003</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface">FLT-OIL-33</td>
+<td class="px-unit-4 py-unit-2 text-on-surface font-medium">Synthetic Oil Filter</td>
+<td class="px-unit-4 py-unit-2 text-secondary">J. Rodriguez</td>
+<td class="px-unit-4 py-unit-2 text-secondary">2024-03-14 11:00</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">200</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">0</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-danger text-right">200</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-danger/10 text-danger border border-danger/20">Failed</span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-unit-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-border-subtle bg-surface hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-secondary">QC-2401-004</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface">BLB-H7-LED</td>
+<td class="px-unit-4 py-unit-2 text-on-surface font-medium">H7 LED Headlight Bulb</td>
+<td class="px-unit-4 py-unit-2 text-secondary">S. Jenkins</td>
+<td class="px-unit-4 py-unit-2 text-secondary">2024-03-14 13:45</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">1000</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-on-surface text-right">1000</td>
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-secondary text-right">0</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-success/10 text-success border border-success/20">Passed</span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-unit-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded text-secondary hover:bg-surface-container-high hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-surface border-t border-border-subtle p-unit-3 flex items-center justify-between">
+<div class="font-body-sm text-body-sm text-secondary">
+                    Showing <span class="font-medium text-on-surface">1</span> to <span class="font-medium text-on-surface">10</span> of <span class="font-medium text-on-surface">248</span> results
+                </div>
+<div class="flex items-center gap-unit-1">
+<button class="p-1 rounded border border-border-subtle text-secondary hover:bg-surface-container-low transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded border border-primary bg-primary/5 text-primary font-body-sm text-body-sm font-medium flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded border border-border-subtle text-secondary hover:bg-surface-container-low font-body-sm text-body-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded border border-border-subtle text-secondary hover:bg-surface-container-low font-body-sm text-body-sm flex items-center justify-center transition-colors">3</button>
+<span class="px-1 text-secondary">...</span>
+<button class="w-8 h-8 rounded border border-border-subtle text-secondary hover:bg-surface-container-low font-body-sm text-body-sm flex items-center justify-center transition-colors">25</button>
+<button class="p-1 rounded border border-border-subtle text-secondary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

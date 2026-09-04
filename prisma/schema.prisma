@@ -1,0 +1,465 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum CategoryStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum PartStatus {
+  ACTIVE
+  INACTIVE
+  DISCONTINUED
+}
+
+enum WarehouseStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+}
+
+enum InventoryStatus {
+  NORMAL
+  LOW
+  OUT
+  OVER
+}
+
+enum ImportReceiptStatus {
+  DRAFT
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+enum ExportReceiptStatus {
+  DRAFT
+  PENDING
+  APPROVED
+  COMPLETED
+  CANCELLED
+}
+
+enum StockCheckStatus {
+  DRAFT
+  IN_PROGRESS
+  COMPLETED
+  ADJUSTED
+  CANCELLED
+}
+
+enum StockCheckDetailStatus {
+  NOT_COUNTED
+  MATCHED
+  SURPLUS
+  SHORTAGE
+  CONFLICT
+}
+
+enum QualityCheckResult {
+  PASSED
+  PARTIALLY_PASSED
+  FAILED
+}
+
+enum QualityCheckSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  MINOR
+  MODERATE
+  MAJOR
+  CRITICAL
+}
+
+enum QualityCheckAction {
+  RETURN
+  RECYCLE
+  DISPOSE
+  REPAIR
+  ACCEPT
+  REWORK
+  REINSPECT
+  QUARANTINE
+  REJECT
+  RETURN_TO_SUPPLIER
+}
+
+enum QualityCheckStatus {
+  DRAFT
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  PENDING
+  REVIEWED
+  RESOLVED
+}
+
+enum ReportType {
+  INVENTORY
+  IMPORT_EXPORT
+  QUALITY
+  DASHBOARD
+}
+
+enum ReportStatus {
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model Role {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  permissions Json     @default("[]") @db.JsonB
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  users       User[]
+
+  @@map("roles")
+}
+
+model User {
+  id                     Int             @id @default(autoincrement())
+  username               String          @unique
+  passwordHash           String
+  email                  String          @unique
+  fullName               String
+  roleId                 Int
+  department             String?
+  status                 UserStatus      @default(ACTIVE)
+  lastLogin              DateTime?
+  createdAt              DateTime        @default(now())
+  updatedAt              DateTime        @updatedAt
+  role                   Role            @relation(fields: [roleId], references: [id], onDelete: Restrict)
+  createdImports         ImportReceipt[] @relation("ImportCreator")
+  createdExports         ExportReceipt[] @relation("ExportCreator")
+  approvedExports        ExportReceipt[] @relation("ExportApprover")
+  performedChecks        StockCheck[]    @relation("StockCheckPerformer")
+  performedQualityChecks QualityCheck[]  @relation("QualityCheckPerformer")
+  generatedReports       Report[]        @relation("ReportGenerator")
+  auditLogs              AuditLog[]
+
+  @@index([roleId])
+  @@index([status])
+  @@map("users")
+}
+
+model Category {
+  id          Int            @id @default(autoincrement())
+  name        String         @unique
+  description String?
+  parentId    Int?
+  status      CategoryStatus @default(ACTIVE)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  parent      Category?      @relation("CategoryHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children    Category[]     @relation("CategoryHierarchy")
+  parts       Part[]
+
+  @@index([parentId])
+  @@index([status])
+  @@map("categories")
+}
+
+model Supplier {
+  id             Int             @id @default(autoincrement())
+  name           String          @unique
+  contactName    String?
+  phone          String?
+  email          String?
+  address        String?
+  taxCode        String?
+  bankAccount    String?
+  rating         Decimal         @default(5.0) @db.Decimal(2, 1)
+  status         UserStatus      @default(ACTIVE)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  parts          Part[]
+  importReceipts ImportReceipt[]
+
+  @@index([status])
+  @@map("suppliers")
+}
+
+model Part {
+  id                Int                   @id @default(autoincrement())
+  sku               String                @unique
+  name              String
+  categoryId        Int
+  brand             String?
+  unit              String                @default("pcs")
+  purchasePrice     Decimal               @db.Decimal(12, 2)
+  salePrice         Decimal               @db.Decimal(12, 2)
+  supplierId        Int?
+  specifications    Json?                 @db.JsonB
+  imageUrl          String?
+  minStock          Int                   @default(10)
+  maxStock          Int                   @default(1000)
+  locationDefault   String?
+  status            PartStatus            @default(ACTIVE)
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+  category          Category              @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  supplier          Supplier?             @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  inventories       Inventory[]
+  importDetails     ImportReceiptDetail[]
+  exportDetails     ExportReceiptDetail[]
+  stockCheckDetails StockCheckDetail[]
+  qualityChecks     QualityCheck[]
+
+  @@index([name])
+  @@index([categoryId])
+  @@index([supplierId])
+  @@index([status])
+  @@map("parts")
+}
+
+model Warehouse {
+  id               Int             @id @default(autoincrement())
+  code             String          @unique
+  name             String
+  address          String?
+  phone            String?
+  description      String?
+  capacity         Int             @default(10000)
+  currentOccupancy Int             @default(0)
+  status           WarehouseStatus @default(ACTIVE)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  inventories      Inventory[]
+  importReceipts   ImportReceipt[]
+  exportReceipts   ExportReceipt[]
+  stockChecks      StockCheck[]
+  qualityChecks    QualityCheck[]
+
+  @@index([status])
+  @@map("warehouses")
+}
+
+model Inventory {
+  id          Int             @id @default(autoincrement())
+  partId      Int
+  warehouseId Int
+  quantity    Int             @default(0)
+  minStock    Int             @default(10)
+  maxStock    Int             @default(1000)
+  location    String?
+  status      InventoryStatus @default(NORMAL)
+  lastUpdated DateTime        @updatedAt
+  part        Part            @relation(fields: [partId], references: [id], onDelete: Restrict)
+  warehouse   Warehouse       @relation(fields: [warehouseId], references: [id], onDelete: Restrict)
+
+  @@unique([partId, warehouseId])
+  @@index([status])
+  @@map("inventories")
+}
+
+model ImportReceipt {
+  id            Int                   @id @default(autoincrement())
+  receiptNumber String                @unique
+  supplierId    Int
+  warehouseId   Int
+  userId        Int
+  importDate    DateTime              @default(now())
+  poNumber      String?
+  deliveryNote  String?
+  totalAmount   Decimal               @default(0) @db.Decimal(14, 2)
+  notes         String?
+  status        ImportReceiptStatus   @default(DRAFT)
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+  supplier      Supplier              @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+  warehouse     Warehouse             @relation(fields: [warehouseId], references: [id], onDelete: Restrict)
+  creator       User                  @relation("ImportCreator", fields: [userId], references: [id], onDelete: Restrict)
+  details       ImportReceiptDetail[]
+  qualityChecks QualityCheck[]
+
+  @@index([supplierId])
+  @@index([warehouseId])
+  @@index([importDate])
+  @@index([status])
+  @@map("import_receipts")
+}
+
+model ImportReceiptDetail {
+  id         Int           @id @default(autoincrement())
+  importId   Int
+  partId     Int
+  quantity   Int
+  unitPrice  Decimal       @db.Decimal(12, 2)
+  totalPrice Decimal       @db.Decimal(14, 2)
+  notes      String?
+  receipt    ImportReceipt @relation(fields: [importId], references: [id], onDelete: Restrict)
+  part       Part          @relation(fields: [partId], references: [id], onDelete: Restrict)
+
+  @@index([importId])
+  @@index([partId])
+  @@map("import_receipt_details")
+}
+
+model ExportReceipt {
+  id                Int                   @id @default(autoincrement())
+  receiptNumber     String                @unique
+  userId            Int
+  requestDepartment String?
+  exportDate        DateTime              @default(now())
+  reason            String?
+  totalAmount       Decimal               @default(0) @db.Decimal(14, 2)
+  approvedBy        Int?
+  status            ExportReceiptStatus   @default(DRAFT)
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+  creator           User                  @relation("ExportCreator", fields: [userId], references: [id], onDelete: Restrict)
+  approver          User?                 @relation("ExportApprover", fields: [approvedBy], references: [id], onDelete: SetNull)
+  warehouseId       Int
+  warehouse         Warehouse             @relation(fields: [warehouseId], references: [id], onDelete: Restrict)
+  details           ExportReceiptDetail[]
+
+  @@index([warehouseId])
+  @@index([exportDate])
+  @@index([status])
+  @@map("export_receipts")
+}
+
+model ExportReceiptDetail {
+  id             Int           @id @default(autoincrement())
+  exportId       Int
+  partId         Int
+  quantity       Int
+  unitPrice      Decimal       @db.Decimal(12, 2)
+  totalPrice     Decimal       @db.Decimal(14, 2)
+  locationPicked String?
+  receipt        ExportReceipt @relation(fields: [exportId], references: [id], onDelete: Restrict)
+  part           Part          @relation(fields: [partId], references: [id], onDelete: Restrict)
+
+  @@index([exportId])
+  @@index([partId])
+  @@map("export_receipt_details")
+}
+
+model StockCheck {
+  id          Int                @id @default(autoincrement())
+  checkNumber String             @unique
+  warehouseId Int
+  performedBy Int
+  checkDate   DateTime           @default(now())
+  status      StockCheckStatus   @default(DRAFT)
+  notes       String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  warehouse   Warehouse          @relation(fields: [warehouseId], references: [id], onDelete: Restrict)
+  performer   User               @relation("StockCheckPerformer", fields: [performedBy], references: [id], onDelete: Restrict)
+  details     StockCheckDetail[]
+
+  @@index([warehouseId])
+  @@index([checkDate])
+  @@index([status])
+  @@map("stock_checks")
+}
+
+model StockCheckDetail {
+  id           Int                    @id @default(autoincrement())
+  stockCheckId Int
+  partId       Int
+  systemQty    Int
+  actualQty    Int?
+  difference   Int?
+  status       StockCheckDetailStatus @default(NOT_COUNTED)
+  notes        String?
+  isAdjusted   Boolean                @default(false)
+  adjustedAt   DateTime?
+  adjustedQty  Int?
+  stockCheck   StockCheck             @relation(fields: [stockCheckId], references: [id], onDelete: Restrict)
+  part         Part                   @relation(fields: [partId], references: [id], onDelete: Restrict)
+
+  @@index([stockCheckId])
+  @@index([partId])
+  @@map("stock_check_details")
+}
+
+model QualityCheck {
+  id                 Int                  @id @default(autoincrement())
+  checkNumber        String               @unique
+  partId             Int
+  warehouseId        Int?
+  importId           Int?
+  checkedBy          Int
+  checkDate          DateTime             @default(now())
+  quantityChecked    Int
+  quantityPassed     Int
+  quantityFailed     Int
+  failureType        String?
+  failureDescription String?
+  severity           QualityCheckSeverity @default(MINOR)
+  result             QualityCheckResult?
+  images             Json?                @db.JsonB
+  action             QualityCheckAction   @default(RETURN)
+  status             QualityCheckStatus   @default(DRAFT)
+  isAdjusted         Boolean              @default(false)
+  adjustedAt         DateTime?
+  adjustedBy         Int?
+  dispositionNotes   String?
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  part               Part                 @relation(fields: [partId], references: [id], onDelete: Restrict)
+  warehouse          Warehouse?           @relation(fields: [warehouseId], references: [id], onDelete: SetNull)
+  importReceipt      ImportReceipt?       @relation(fields: [importId], references: [id], onDelete: SetNull)
+  performer          User                 @relation("QualityCheckPerformer", fields: [checkedBy], references: [id], onDelete: Restrict)
+
+  @@index([partId])
+  @@index([warehouseId])
+  @@index([checkDate])
+  @@index([status])
+  @@index([result])
+  @@map("quality_checks")
+}
+
+model Report {
+  id            Int          @id @default(autoincrement())
+  reportType    ReportType
+  title         String
+  parameters    Json?        @db.JsonB
+  generatedDate DateTime     @default(now())
+  generatedBy   Int
+  dataSummary   Json?        @db.JsonB
+  fileUrl       String?
+  status        ReportStatus @default(COMPLETED)
+  createdAt     DateTime     @default(now())
+  generator     User         @relation("ReportGenerator", fields: [generatedBy], references: [id], onDelete: Restrict)
+
+  @@index([reportType])
+  @@index([generatedDate])
+  @@index([status])
+  @@map("reports")
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?    @db.JsonB
+  ipAddress String?
+  timestamp DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([timestamp])
+  @@map("audit_logs")
+}

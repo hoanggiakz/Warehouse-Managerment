@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Warehouses Management - AutoStock Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#757684",
+                      "surface": "#f7f9fb",
+                      "success": "#059669",
+                      "surface-dim": "#d8dadc",
+                      "on-background": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "border-subtle": "#E2E8F0",
+                      "surface-alt": "#F1F5F9",
+                      "on-surface-variant": "#444653",
+                      "inverse-primary": "#b8c4ff",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#c4c5d5",
+                      "primary-container": "#1e40af",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed": "#d3e4fe",
+                      "surface-bright": "#f7f9fb",
+                      "surface-variant": "#e0e3e5",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary-container": "#434b60",
+                      "primary-fixed": "#dde1ff",
+                      "background": "#f7f9fb",
+                      "on-primary-fixed-variant": "#173bab",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "secondary": "#505f76",
+                      "surface-container": "#eceef0",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-container": "#d0e1fb",
+                      "on-primary-fixed": "#001453",
+                      "on-primary-container": "#a8b8ff",
+                      "error": "#ba1a1a",
+                      "tertiary": "#2d3449",
+                      "danger": "#E11D48",
+                      "warning": "#D97706",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-container": "#54647a",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-surface": "#191c1e",
+                      "surface-container-high": "#e6e8ea",
+                      "tertiary-fixed": "#dae2fd",
+                      "on-tertiary-container": "#b4bbd5",
+                      "on-tertiary-fixed": "#131b2e",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "surface-tint": "#3755c3",
+                      "inverse-surface": "#2d3133",
+                      "on-error": "#ffffff",
+                      "primary": "#00288e",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit-3": "12px",
+                      "unit-8": "32px",
+                      "gutter": "16px",
+                      "unit-2": "8px",
+                      "base": "4px",
+                      "margin-desktop": "24px",
+                      "margin-mobile": "16px",
+                      "unit-4": "16px",
+                      "unit-1": "4px",
+                      "unit-6": "24px"
+              },
+              "fontFamily": {
+                      "data-mono": [
+                              "jetbrainsMono"
+                      ],
+                      "card-title": [
+                              "Inter"
+                      ],
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-base": [
+                              "Inter"
+                      ],
+                      "page-title": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "data-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "card-title": [
+                              "16px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-base": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "page-title": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-base h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full py-unit-4 px-unit-2 fixed left-0 top-0 w-[240px] border-r border-border-subtle bg-surface-container z-50">
+<div class="mb-unit-8 px-unit-2 flex items-center gap-unit-3">
+<div class="w-10 h-10 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">warehouse</span>
+</div>
+<div>
+<h1 class="font-section-title text-section-title font-bold text-on-surface">Inventory Ops</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Central Hub</p>
+</div>
+</div>
+<nav class="flex-1 space-y-unit-1">
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-base text-body-base">Dashboard</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-body-base text-body-base">Parts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded bg-secondary-container text-on-secondary-container font-semibold cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">warehouse</span>
+<span class="font-body-base text-body-base">Warehouses</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-base text-body-base">Inventory</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-base text-body-base">Receipts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-base text-body-base">Reports</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-[240px] h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-margin-desktop h-16 w-full z-40 bg-surface-container-lowest border-b border-border-subtle docked full-width top-0">
+<div class="flex items-center gap-unit-4">
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-page-title text-page-title font-bold text-primary hidden md:block">AutoStock Pro</div>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-md mx-unit-6 hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-unit-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-unit-3 py-unit-2 bg-surface-alt border border-border-subtle rounded text-body-base focus:ring-2 focus:ring-primary-container focus:border-primary-container transition-shadow" placeholder="Global search..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-unit-4">
+<button class="text-on-surface-variant hover:bg-surface-alt p-2 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-alt p-2 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center font-bold ml-2">
+                    WM
+                </div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop bg-surface">
+<!-- Breadcrumbs & Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-unit-6 gap-unit-4">
+<div>
+<nav class="flex items-center text-body-sm font-body-sm text-outline mb-unit-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
+<span class="text-on-surface">Warehouses</span>
+</nav>
+<h2 class="font-page-title text-page-title text-on-surface">Warehouses Management</h2>
+</div>
+<button class="bg-primary-container text-on-primary px-unit-4 py-unit-2 rounded flex items-center gap-unit-2 hover:bg-primary transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-primary-container">
+<span class="material-symbols-outlined">add</span>
+<span class="font-body-base text-body-base font-semibold">Add Warehouse</span>
+</button>
+</div>
+<!-- Filters & Search -->
+<div class="bg-surface-container-lowest border border-border-subtle p-unit-4 rounded mb-unit-4 flex flex-col md:flex-row gap-unit-4 items-center justify-between">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-unit-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-unit-3 py-unit-2 bg-surface-alt border border-border-subtle rounded text-body-base focus:ring-2 focus:ring-primary-container focus:border-primary-container transition-shadow" placeholder="Search by code or name..." type="text">
+</div>
+<div class="flex items-center gap-unit-4 w-full md:w-auto">
+<div class="flex items-center gap-unit-2 w-full md:w-auto">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Status</label>
+<select class="bg-surface-alt border border-border-subtle rounded py-unit-2 px-unit-3 text-body-base focus:ring-2 focus:ring-primary-container focus:border-primary-container min-w-[150px]">
+<option value="all">All Statuses</option>
+<option value="active">Active</option>
+<option value="maintenance">Maintenance</option>
+<option value="disabled">Disabled</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface font-label-caps text-label-caps text-on-surface-variant uppercase border-b border-border-subtle">
+<th class="px-unit-4 py-unit-3">Warehouse Code</th>
+<th class="px-unit-4 py-unit-3">Warehouse Name</th>
+<th class="px-unit-4 py-unit-3">Location</th>
+<th class="px-unit-4 py-unit-3">Description</th>
+<th class="px-unit-4 py-unit-3">Status</th>
+<th class="px-unit-4 py-unit-3">Updated At</th>
+<th class="px-unit-4 py-unit-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-base text-body-base divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 h-10 font-data-mono text-data-mono text-secondary">WH-ATL-01</td>
+<td class="px-unit-4 py-unit-2 h-10 font-semibold text-on-surface">Atlanta Central</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant">Atlanta, GA</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant truncate max-w-[200px]">Main southeast distribution hub.</td>
+<td class="px-unit-4 py-unit-2 h-10">
+<span class="inline-flex items-center px-2 py-1 rounded bg-success/10 text-success text-xs font-semibold">
+                                        Active
+                                    </span>
+</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-unit-4 py-unit-2 h-10 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1" title="View">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-outline hover:text-danger transition-colors p-1" title="Disable">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-alt hover:bg-surface-dim transition-colors group">
+<td class="px-unit-4 py-unit-2 h-10 font-data-mono text-data-mono text-secondary">WH-DAL-02</td>
+<td class="px-unit-4 py-unit-2 h-10 font-semibold text-on-surface">Dallas Overflow</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant">Dallas, TX</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant truncate max-w-[200px]">Secondary storage for heavy parts.</td>
+<td class="px-unit-4 py-unit-2 h-10">
+<span class="inline-flex items-center px-2 py-1 rounded bg-success/10 text-success text-xs font-semibold">
+                                        Active
+                                    </span>
+</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant">Oct 22, 2023</td>
+<td class="px-unit-4 py-unit-2 h-10 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1" title="View">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-outline hover:text-danger transition-colors p-1" title="Disable">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 h-10 font-data-mono text-data-mono text-secondary">WH-CHI-01</td>
+<td class="px-unit-4 py-unit-2 h-10 font-semibold text-on-surface">Chicago North</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant">Chicago, IL</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant truncate max-w-[200px]">Midwest regional center.</td>
+<td class="px-unit-4 py-unit-2 h-10">
+<span class="inline-flex items-center px-2 py-1 rounded bg-warning/10 text-warning text-xs font-semibold">
+                                        Maintenance
+                                    </span>
+</td>
+<td class="px-unit-4 py-unit-2 h-10 text-on-surface-variant">Oct 20, 2023</td>
+<td class="px-unit-4 py-unit-2 h-10 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1" title="View">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-outline hover:text-danger transition-colors p-1" title="Disable">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-surface border-t border-border-subtle px-unit-4 py-unit-3 flex items-center justify-between">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                        Showing <span class="font-semibold text-on-surface">1</span> to <span class="font-semibold text-on-surface">3</span> of <span class="font-semibold text-on-surface">12</span> results
+                    </div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded text-outline hover:bg-border-subtle transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-alt text-on-surface-variant font-body-sm text-body-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-alt text-on-surface-variant font-body-sm text-body-sm flex items-center justify-center transition-colors">3</button>
+<button class="p-1 rounded text-outline hover:bg-border-subtle transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown for demonstration) -->
+<div class="hidden mt-unit-8 bg-surface-container-lowest border border-border-subtle rounded p-unit-8 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-6xl text-outline-variant mb-unit-4">domain_disabled</span>
+<h3 class="font-section-title text-section-title text-on-surface mb-unit-2">No Warehouses Found</h3>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-md mb-unit-6">
+                    It looks like you don't have any warehouses set up yet, or none match your current search criteria.
+                </p>
+<button class="bg-primary-container text-on-primary px-unit-4 py-unit-2 rounded flex items-center gap-unit-2 hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+<span class="font-body-base text-body-base font-semibold">Add First Warehouse</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Stock Check History - Precision Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#dae2fd",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#00288e",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-surface-variant": "#444653",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "on-surface": "#191c1e",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "danger": "#E11D48",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "on-primary-container": "#a8b8ff",
+                    "inverse-primary": "#b8c4ff",
+                    "tertiary-container": "#434b60",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-container": "#b4bbd5",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "outline-variant": "#c4c5d5",
+                    "surface-alt": "#F1F5F9",
+                    "on-secondary": "#ffffff",
+                    "warning": "#D97706",
+                    "outline": "#757684",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "secondary-container": "#d0e1fb",
+                    "on-tertiary-fixed": "#131b2e",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary": "#2d3449",
+                    "on-primary-fixed": "#001453",
+                    "secondary": "#505f76",
+                    "on-error-container": "#93000a",
+                    "surface": "#f7f9fb",
+                    "success": "#059669",
+                    "surface-tint": "#3755c3",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-container": "#1e40af",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "on-secondary-container": "#54647a",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-fixed": "#0b1c30",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-primary-fixed-variant": "#173bab",
+                    "surface-container-high": "#e6e8ea",
+                    "border-subtle": "#E2E8F0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "unit-2": "8px",
+                    "unit-8": "32px",
+                    "unit-4": "16px",
+                    "base": "4px",
+                    "margin-desktop": "24px",
+                    "unit-1": "4px",
+                    "unit-6": "24px",
+                    "unit-3": "12px"
+            },
+            "fontFamily": {
+                    "section-title": [
+                            "Inter"
+                    ],
+                    "card-title": [
+                            "Inter"
+                    ],
+                    "body-base": [
+                            "Inter"
+                    ],
+                    "page-title": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "data-mono": [
+                            "jetbrainsMono"
+                    ]
+            },
+            "fontSize": {
+                    "section-title": [
+                            "18px",
+                            {
+                                    "lineHeight": "24px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "card-title": [
+                            "16px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-base": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "page-title": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "11px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "data-mono": [
+                            "13px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for neatness */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base text-body-base antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col h-full py-unit-4 w-[240px] fixed left-0 top-0 border-r border-outline-variant bg-surface-container-lowest z-10 transition-all duration-150 ease-in-out">
+<div class="px-margin-desktop mb-unit-8 flex items-center gap-unit-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary fill text-[20px]">inventory_2</span>
+</div>
+<div>
+<h1 class="font-section-title text-section-title font-bold text-primary truncate">Precision Logistics</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Enterprise v2.1</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-unit-2 space-y-1">
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-secondary hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-secondary hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">settings_input_component</span>
+<span class="font-label-caps text-label-caps uppercase">Parts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-secondary hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">warehouse</span>
+<span class="font-label-caps text-label-caps uppercase">Warehouses</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-bold border-r-4 border-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary fill">inventory_2</span>
+<span class="font-label-caps text-label-caps uppercase">Inventory</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-secondary hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">receipt_long</span>
+<span class="font-label-caps text-label-caps uppercase">Receipts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-secondary hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">assessment</span>
+<span class="font-label-caps text-label-caps uppercase">Reports</span>
+</a>
+</div>
+<div class="mt-auto px-unit-2 pt-unit-4 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-secondary hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">help</span>
+<span class="font-label-caps text-label-caps uppercase">Support</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded text-secondary hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">logout</span>
+<span class="font-label-caps text-label-caps uppercase">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-[240px] h-full overflow-hidden bg-background">
+<!-- TopNavBar (Shared Component - Mobile Only View) -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile w-full h-16 border-b border-outline-variant bg-surface shrink-0">
+<div class="flex items-center gap-unit-3">
+<button class="p-unit-2 -ml-unit-2 text-on-surface-variant active:opacity-80">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-page-title text-page-title text-primary truncate">Precision Logistics</h1>
+</div>
+<div class="flex items-center gap-unit-2">
+<button class="p-unit-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-unit-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Page Header & Breadcrumbs -->
+<div class="px-margin-mobile md:px-margin-desktop py-unit-6 shrink-0 bg-surface-container-lowest border-b border-border-subtle flex flex-col gap-unit-4">
+<nav class="flex items-center gap-unit-2 text-on-surface-variant font-body-sm text-body-sm">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Stock Check</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-medium">History</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-unit-4">
+<h2 class="font-page-title text-page-title text-on-surface">Stock Check History</h2>
+<button class="inline-flex items-center justify-center gap-unit-2 px-unit-4 py-unit-2 bg-primary text-on-primary rounded font-card-title text-card-title hover:bg-primary-fixed-variant transition-colors shadow-sm self-start md:self-auto">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    New Stock Check
+                </button>
+</div>
+</div>
+<!-- Filters & Search -->
+<div class="px-margin-mobile md:px-margin-desktop py-unit-4 shrink-0 bg-background flex flex-col md:flex-row gap-unit-4 items-start md:items-center border-b border-border-subtle">
+<div class="relative w-full md:w-96">
+<div class="absolute inset-y-0 left-0 pl-unit-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full pl-10 pr-unit-3 py-2 bg-surface-container-lowest border border-outline-variant rounded text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary focus:border-primary font-body-base text-body-base transition-shadow" placeholder="Search by Warehouse or Reference No..." type="text">
+</div>
+<div class="flex flex-wrap items-center gap-unit-3 w-full md:w-auto">
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded pl-unit-3 pr-10 py-2 text-on-surface focus:ring-2 focus:ring-primary focus:border-primary font-body-base text-body-base transition-shadow cursor-pointer">
+<option value="">All Dates</option>
+<option value="today">Today</option>
+<option value="7days">Last 7 Days</option>
+<option value="30days">Last 30 Days</option>
+<option value="custom">Custom Range...</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded pl-unit-3 pr-10 py-2 text-on-surface focus:ring-2 focus:ring-primary focus:border-primary font-body-base text-body-base transition-shadow cursor-pointer">
+<option value="">All Statuses</option>
+<option value="draft">Draft</option>
+<option value="completed">Completed</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</div>
+</div>
+<button class="p-2 text-secondary hover:bg-surface-container rounded transition-colors ml-auto md:ml-0 border border-transparent hover:border-outline-variant" title="Clear Filters">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Data Table Canvas -->
+<div class="flex-1 overflow-auto px-margin-mobile md:px-margin-desktop py-unit-4 bg-background">
+<div class="bg-surface-container-lowest border border-border-subtle rounded flex flex-col h-full shadow-sm">
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead class="bg-surface sticky top-0 z-10 shadow-sm border-b border-border-subtle">
+<tr>
+<th class="px-unit-4 py-unit-3 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Reference No</th>
+<th class="px-unit-4 py-unit-3 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Warehouse</th>
+<th class="px-unit-4 py-unit-3 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-unit-4 py-unit-3 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Performed By</th>
+<th class="px-unit-4 py-unit-3 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider text-right">Total Discrepancies</th>
+<th class="px-unit-4 py-unit-3 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-unit-4 py-unit-3 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle font-body-base text-body-base text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-primary font-medium">SC-2023-1042</td>
+<td class="px-unit-4 py-unit-2">WH-Alpha (Chicago)</td>
+<td class="px-unit-4 py-unit-2">Oct 24, 2023 14:30</td>
+<td class="px-unit-4 py-unit-2 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-label-caps text-[10px]">JD</div>
+                                    John Doe
+                                </td>
+<td class="px-unit-4 py-unit-2 text-right font-data-mono text-data-mono text-danger">3</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-success/10 text-success border border-success/20">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-secondary hover:text-primary hover:bg-secondary-fixed rounded transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-primary hover:bg-secondary-fixed rounded transition-colors" title="Print Report">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-primary font-medium">SC-2023-1041</td>
+<td class="px-unit-4 py-unit-2">WH-Beta (Dallas)</td>
+<td class="px-unit-4 py-unit-2">Oct 23, 2023 09:15</td>
+<td class="px-unit-4 py-unit-2 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-caps text-[10px]">AS</div>
+                                    Alice Smith
+                                </td>
+<td class="px-unit-4 py-unit-2 text-right font-data-mono text-data-mono">0</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-warning/10 text-warning border border-warning/20">
+                                        Draft
+                                    </span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-secondary hover:text-primary hover:bg-secondary-fixed rounded transition-colors" title="Continue Draft">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-primary font-medium">SC-2023-1040</td>
+<td class="px-unit-4 py-unit-2">WH-Gamma (Seattle)</td>
+<td class="px-unit-4 py-unit-2">Oct 21, 2023 16:45</td>
+<td class="px-unit-4 py-unit-2 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-label-caps text-[10px]">JD</div>
+                                    John Doe
+                                </td>
+<td class="px-unit-4 py-unit-2 text-right font-data-mono text-data-mono text-danger">12</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-success/10 text-success border border-success/20">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-secondary hover:text-primary hover:bg-secondary-fixed rounded transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-primary hover:bg-secondary-fixed rounded transition-colors" title="Print Report">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="px-unit-4 py-unit-2 font-data-mono text-data-mono text-primary font-medium">SC-2023-1039</td>
+<td class="px-unit-4 py-unit-2">WH-Alpha (Chicago)</td>
+<td class="px-unit-4 py-unit-2">Oct 18, 2023 11:00</td>
+<td class="px-unit-4 py-unit-2 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-caps text-[10px]">MJ</div>
+                                    Mike Johnson
+                                </td>
+<td class="px-unit-4 py-unit-2 text-right font-data-mono text-data-mono text-danger">1</td>
+<td class="px-unit-4 py-unit-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-success/10 text-success border border-success/20">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-unit-4 py-unit-2 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-secondary hover:text-primary hover:bg-secondary-fixed rounded transition-colors" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1 text-secondary hover:text-primary hover:bg-secondary-fixed rounded transition-colors" title="Print Report">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="border-t border-border-subtle px-unit-4 py-unit-3 flex items-center justify-between bg-surface shrink-0">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing <span class="font-medium text-on-surface">1</span> to <span class="font-medium text-on-surface">4</span> of <span class="font-medium text-on-surface">42</span> results</p>
+<nav class="flex items-center gap-1">
+<button class="p-1 rounded text-outline hover:text-primary hover:bg-surface-container disabled:opacity-50 disabled:cursor-not-allowed transition-colors" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-body-sm text-body-sm flex items-center justify-center font-medium">1</button>
+<button class="w-8 h-8 rounded text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-sm text-body-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-sm text-body-sm flex items-center justify-center transition-colors">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-outline">...</span>
+<button class="w-8 h-8 rounded text-on-surface-variant hover:bg-surface-container hover:text-primary font-body-sm text-body-sm flex items-center justify-center transition-colors">10</button>
+<button class="p-1 rounded text-outline hover:text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</div>
+</main>
+</body></html>

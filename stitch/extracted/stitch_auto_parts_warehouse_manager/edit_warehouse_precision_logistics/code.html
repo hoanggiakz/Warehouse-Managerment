@@ -1,0 +1,316 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Edit Warehouse - AutoStock Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#757684",
+                      "surface": "#f7f9fb",
+                      "success": "#059669",
+                      "surface-dim": "#d8dadc",
+                      "on-background": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "border-subtle": "#E2E8F0",
+                      "surface-alt": "#F1F5F9",
+                      "on-surface-variant": "#444653",
+                      "inverse-primary": "#b8c4ff",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#c4c5d5",
+                      "primary-container": "#1e40af",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed": "#d3e4fe",
+                      "surface-bright": "#f7f9fb",
+                      "surface-variant": "#e0e3e5",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary-container": "#434b60",
+                      "primary-fixed": "#dde1ff",
+                      "background": "#f7f9fb",
+                      "on-primary-fixed-variant": "#173bab",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "secondary": "#505f76",
+                      "surface-container": "#eceef0",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-container": "#d0e1fb",
+                      "on-primary-fixed": "#001453",
+                      "on-primary-container": "#a8b8ff",
+                      "error": "#ba1a1a",
+                      "tertiary": "#2d3449",
+                      "danger": "#E11D48",
+                      "warning": "#D97706",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-container": "#54647a",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-surface": "#191c1e",
+                      "surface-container-high": "#e6e8ea",
+                      "tertiary-fixed": "#dae2fd",
+                      "on-tertiary-container": "#b4bbd5",
+                      "on-tertiary-fixed": "#131b2e",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "surface-tint": "#3755c3",
+                      "inverse-surface": "#2d3133",
+                      "on-error": "#ffffff",
+                      "primary": "#00288e",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit-3": "12px",
+                      "unit-8": "32px",
+                      "gutter": "16px",
+                      "unit-2": "8px",
+                      "base": "4px",
+                      "margin-desktop": "24px",
+                      "margin-mobile": "16px",
+                      "unit-4": "16px",
+                      "unit-1": "4px",
+                      "unit-6": "24px"
+              },
+              "fontFamily": {
+                      "data-mono": ["JetBrains Mono", "monospace"],
+                      "card-title": ["Inter", "sans-serif"],
+                      "section-title": ["Inter", "sans-serif"],
+                      "label-caps": ["Inter", "sans-serif"],
+                      "body-base": ["Inter", "sans-serif"],
+                      "page-title": ["Inter", "sans-serif"],
+                      "body-sm": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "data-mono": ["13px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "card-title": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "section-title": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-base": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "page-title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="h-full bg-background text-on-surface font-body-base text-body-base overflow-hidden flex flex-col antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface-container-lowest border-b border-border-subtle flex justify-between items-center px-margin-desktop h-16 w-full z-40 shrink-0">
+<div class="flex items-center gap-unit-4">
+<span class="font-page-title text-page-title font-bold text-primary">AutoStock Pro</span>
+</div>
+<div class="flex-1 max-w-md mx-unit-6 relative hidden md:block">
+<span class="material-symbols-outlined absolute left-unit-3 top-1/2 -translate-y-1/2 text-outline" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-alt border border-border-subtle rounded text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all" placeholder="Search inventory, warehouses..." type="text">
+</div>
+<div class="flex items-center gap-unit-2">
+<button class="p-unit-2 text-on-surface-variant hover:bg-surface-alt transition-colors rounded cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="p-unit-2 text-on-surface-variant hover:bg-surface-alt transition-colors rounded cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<div class="h-8 w-8 rounded overflow-hidden ml-unit-2 border border-border-subtle">
+<img alt="Warehouse Manager Profile" class="h-full w-full object-cover" data-alt="A professional headshot of a warehouse manager in a well-lit corporate logistics office environment. High resolution, professional lighting, industrial corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFnGLVeaiUzVZO_J1KNbufesGQk9B5c_R2OU2cyRMZiOxQuE5MLtqknV2fYZS7RhKAO0BovrnPXOquNQm33UJl60seKHy_IUvaYMiG3pMG-Yvvy_yxmWZGMiAHoe_IbDdfoZc938mpvdYi3e37PbVj2CiLZefnflwCXupLyRgs9apTLXJmYAqo5hbEMFN4J9Zuqy5DMVRfMSrX_G1EaQdRqRws2akNMYq7fiMi2au42tVQzkSvLxZRCg">
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col h-full py-unit-4 px-unit-2 bg-surface-container border-r border-border-subtle w-[240px] shrink-0 z-30">
+<div class="px-unit-3 pb-unit-6 mb-unit-4 border-b border-border-subtle">
+<div class="flex items-center gap-unit-3 mb-2">
+<div class="h-10 w-10 bg-surface-alt rounded border border-border-subtle overflow-hidden flex-shrink-0">
+<img alt="Organization Logo" class="h-full w-full object-cover" data-alt="A clean, minimalist logo mark for a high-end logistics and inventory operations central hub. Geometric, modern corporate identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzyn-IrbkTP0l3YJa0BsUY_AC9a7m-3k3RME05Co2EGyoEMOvNSBPGQYfGCMieV8eYj16Fv-jAgrZVQmOGnzwTbCN35NiHrHRQ1v4i_p0k3xHpTKWSQXOYfiOxjC9E3BG6cG2o1V7v3qQEd8etWwxE-ZwTCmMY1pUk4qpEqEkWbrD8bCV06KoTsH_PLO-G5f8TaON068XtoqgVqauWLqZOB0n9u1VkKQh_0bNLah1_x9G_NAw2ofM-MQ">
+</div>
+<div>
+<h2 class="font-section-title text-section-title font-bold text-on-surface line-clamp-1">Inventory Ops</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Central Hub</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-1 overflow-y-auto scrollbar-hide">
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-body-base text-body-base">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+<span class="font-body-base text-body-base">Parts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2.5 rounded bg-secondary-container text-on-secondary-container font-semibold transition-colors cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">warehouse</span>
+<span class="font-body-base text-body-base">Warehouses</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span class="font-body-base text-body-base">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-body-base text-body-base">Receipts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-dim transition-colors cursor-pointer duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">assessment</span>
+<span class="font-body-base text-body-base">Reports</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background relative flex flex-col">
+<!-- Toast Notification (Absolute Top Right) -->
+<div class="absolute top-unit-4 right-margin-desktop bg-surface-container-lowest border border-border-subtle shadow-md rounded border-l-4 border-l-success p-unit-3 flex items-start gap-unit-3 z-50 transform transition-all duration-300 opacity-100 translate-y-0 max-w-sm" id="toast-success">
+<span class="material-symbols-outlined text-success mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface">Warehouse information updated successfully</p>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors cursor-pointer" onclick="document.getElementById('toast-success').style.display='none'">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Page Header -->
+<div class="px-margin-desktop py-unit-6 flex-shrink-0">
+<nav aria-label="Breadcrumb" class="flex text-on-surface-variant font-body-sm text-body-sm mb-unit-2">
+<ol class="inline-flex items-center space-x-1 md:space-x-2">
+<li class="inline-flex items-center">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[14px] mx-1">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Warehouses</a>
+</div>
+</li>
+<li aria-current="page">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[14px] mx-1">chevron_right</span>
+<span class="text-on-surface font-medium">Edit Warehouse</span>
+</div>
+</li>
+</ol>
+</nav>
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-page-title text-page-title font-bold text-on-surface tracking-tight">Edit Warehouse: North-01 Central Hub</h1>
+</div>
+</div>
+</div>
+<!-- Form Container -->
+<div class="px-margin-desktop pb-margin-desktop flex-1">
+<div class="bg-surface-container-lowest border border-border-subtle rounded shadow-sm max-w-4xl mx-auto">
+<div class="border-b border-border-subtle px-unit-4 py-unit-3 bg-surface-alt rounded-t">
+<h2 class="font-card-title text-card-title text-on-surface">Warehouse Details</h2>
+</div>
+<form class="p-unit-6 flex flex-col gap-unit-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-unit-6">
+<!-- Code Field -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-unit-1" for="wh-code">Code</label>
+<input class="w-full bg-surface border border-border-subtle rounded px-unit-3 py-2 font-data-mono text-data-mono text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all" id="wh-code" name="wh-code" readonly="" type="text" value="WH-N01">
+<p class="mt-1 font-body-sm text-body-sm text-outline">System generated identifier. Cannot be changed.</p>
+</div>
+<!-- Status Field -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-unit-1" for="wh-status">Status</label>
+<select class="w-full bg-surface-container-lowest border border-border-subtle rounded px-unit-3 py-2 font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all" id="wh-status" name="wh-status">
+<option selected="" value="active">Active</option>
+<option value="inactive">Inactive</option>
+<option value="maintenance">Maintenance</option>
+</select>
+</div>
+</div>
+<!-- Name Field -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-unit-1" for="wh-name">Name</label>
+<input class="w-full bg-surface-container-lowest border border-border-subtle rounded px-unit-3 py-2 font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all" id="wh-name" name="wh-name" type="text" value="North-01 Central Hub">
+</div>
+<!-- Location Field -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-unit-1" for="wh-location">Location</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-unit-3 text-outline text-[18px]">location_on</span>
+<input class="w-full bg-surface-container-lowest border border-border-subtle rounded pl-10 pr-unit-3 py-2 font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all" id="wh-location" name="wh-location" type="text" value="Chicago, IL">
+</div>
+</div>
+<!-- Description Field -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-unit-1" for="wh-desc">Description</label>
+<textarea class="w-full bg-surface-container-lowest border border-border-subtle rounded px-unit-3 py-2 font-body-base text-body-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all resize-y" id="wh-desc" name="wh-desc" rows="3">Primary distribution center for engine components</textarea>
+</div>
+<!-- Actions -->
+<div class="pt-unit-4 mt-unit-2 border-t border-border-subtle flex justify-end gap-unit-3">
+<button class="px-unit-4 py-2 bg-transparent border border-outline text-on-surface font-body-base text-body-base font-medium rounded hover:bg-surface-alt transition-colors focus:outline-none focus:ring-2 focus:ring-outline" type="button">
+                                Cancel
+                            </button>
+<button class="px-unit-4 py-2 bg-primary-container text-on-primary font-body-base text-body-base font-medium rounded hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2" type="submit">
+                                Save Changes
+                            </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Navigation (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-container-lowest border-t border-border-subtle flex justify-around items-center h-16 pb-safe z-40">
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:bg-surface-alt transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-caps text-[10px] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary font-medium hover:bg-surface-alt transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">warehouse</span>
+<span class="font-label-caps text-[10px] mt-1">Warehouses</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:bg-surface-alt transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span class="font-label-caps text-[10px] mt-1">Inventory</span>
+</a>
+</nav>
+<script>
+        // Simple auto-hide for the toast after 5 seconds
+        setTimeout(() => {
+            const toast = document.getElementById('toast-success');
+            if(toast) {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', '-translate-y-4');
+                setTimeout(() => { toast.style.display = 'none'; }, 300);
+            }
+        }, 5000);
+    </script>
+</body></html>

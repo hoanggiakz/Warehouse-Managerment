@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { --background: 210 33% 98%; --foreground: 210 10% 12%; --surface: 0 0% 100%; --primary: 224 71% 40%; --primary-foreground: 0 0% 100%; --muted: 210 28% 95%; --muted-foreground: 215 16% 42%; --border: 214 23% 89%; --input: 214 23% 89%; --ring: 224 71% 40%; --success: 158 84% 30%; --warning: 32 95% 44%; --destructive: 350 76% 47%; --destructive-foreground: 0 0% 100%; --info: 204 86% 42%; --radius: 0.25rem; }
+  * { @apply border-border; }
+  body { @apply min-h-screen bg-background font-sans text-foreground antialiased; }
+}
+@layer utilities { .text-label { @apply text-xs font-semibold uppercase tracking-wide; } .text-caption { @apply text-xs text-muted-foreground; } .text-technical { @apply font-mono text-sm tracking-tight; } .text-sku, .text-vin, .text-location { @apply text-technical; } }

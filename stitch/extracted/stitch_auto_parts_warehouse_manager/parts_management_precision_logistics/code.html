@@ -1,0 +1,546 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Parts Management - WMS Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#d8dadc",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "on-primary-container": "#a8b8ff",
+                      "secondary-fixed": "#d3e4fe",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-container-low": "#f2f4f6",
+                      "secondary": "#505f76",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-error": "#ffffff",
+                      "surface-alt": "#F1F5F9",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#3755c3",
+                      "on-surface-variant": "#444653",
+                      "outline-variant": "#c4c5d5",
+                      "tertiary-container": "#434b60",
+                      "on-primary-fixed": "#001453",
+                      "inverse-surface": "#2d3133",
+                      "on-background": "#191c1e",
+                      "on-tertiary-container": "#b4bbd5",
+                      "secondary-container": "#d0e1fb",
+                      "tertiary-fixed": "#dae2fd",
+                      "inverse-on-surface": "#eff1f3",
+                      "error": "#ba1a1a",
+                      "surface": "#f7f9fb",
+                      "danger": "#E11D48",
+                      "on-primary-fixed-variant": "#173bab",
+                      "on-secondary-fixed": "#0b1c30",
+                      "surface-container": "#eceef0",
+                      "warning": "#D97706",
+                      "surface-variant": "#e0e3e5",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "tertiary": "#2d3449",
+                      "surface-container-highest": "#e0e3e5",
+                      "error-container": "#ffdad6",
+                      "outline": "#757684",
+                      "primary-container": "#1e40af",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#f7f9fb",
+                      "on-secondary-container": "#54647a",
+                      "primary": "#00288e",
+                      "success": "#059669",
+                      "on-tertiary-fixed": "#131b2e",
+                      "primary-fixed": "#dde1ff",
+                      "on-error-container": "#93000a",
+                      "border-subtle": "#E2E8F0",
+                      "background": "#f7f9fb",
+                      "on-secondary-fixed-variant": "#38485d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit-1": "4px",
+                      "margin-desktop": "24px",
+                      "unit-8": "32px",
+                      "margin-mobile": "16px",
+                      "unit-6": "24px",
+                      "unit-4": "16px",
+                      "unit-3": "12px",
+                      "unit-2": "8px",
+                      "base": "4px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "data-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "page-title": [
+                              "Inter"
+                      ],
+                      "body-base": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "card-title": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "page-title": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-base": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "card-title": [
+                              "16px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for high density tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-base antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface border-r border-border-subtle dark:border-outline-variant fixed left-0 top-0 h-full w-60 z-20 hidden md:flex flex-col py-4">
+<!-- Brand / Header -->
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-lg">conveyor_belt</span>
+</div>
+<div>
+<div class="font-page-title text-page-title text-primary dark:text-inverse-primary leading-tight">WMS Pro</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Global Logistics</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col flex-1 px-3 gap-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-secondary dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-colors duration-200 active:bg-surface-container-highest transition-all duration-100 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-body-base">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT bg-surface-container-high dark:bg-tertiary-container text-primary dark:text-on-primary-container font-bold active:bg-surface-container-highest transition-all duration-100" href="#">
+<span class="material-symbols-outlined text-xl" data-weight="fill">settings_input_component</span>
+<span class="font-body-base">Parts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-secondary dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-colors duration-200 active:bg-surface-container-highest transition-all duration-100 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">warehouse</span>
+<span class="font-body-base">Warehouses</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-secondary dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-colors duration-200 active:bg-surface-container-highest transition-all duration-100 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">inventory_2</span>
+<span class="font-body-base">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-secondary dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-colors duration-200 active:bg-surface-container-highest transition-all duration-100 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">receipt_long</span>
+<span class="font-body-base">Receipts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-secondary dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-colors duration-200 active:bg-surface-container-highest transition-all duration-100 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">assessment</span>
+<span class="font-body-base">Reports</span>
+</a>
+</li>
+</ul>
+<!-- User Profile snippet at bottom -->
+<div class="px-6 mt-auto pt-4 border-t border-border-subtle">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-primary-container font-bold text-sm">
+                     JD
+                 </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-on-surface font-medium">John Doe</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Admin</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-60 h-full relative">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-border-subtle dark:border-outline-variant flex justify-between items-center h-16 px-gutter shrink-0 sticky top-0 z-10 w-full">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Button (visible on mobile only) -->
+<button class="md:hidden text-on-surface p-2 rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-page-title text-page-title text-on-surface dark:text-on-surface-variant">Dashboard</div>
+</div>
+<!-- Top Nav Links (hidden on mobile, can be used for contextual top nav if needed, but keeping JSON structure) -->
+<nav class="hidden md:flex gap-6 h-full items-center">
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-[18px] pt-[20px] font-section-title text-section-title h-full flex items-center active:opacity-80 transition-opacity" href="#">Overview</a>
+<a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors font-section-title text-section-title active:opacity-80 transition-opacity" href="#">Analytics</a>
+<a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors font-section-title text-section-title active:opacity-80 transition-opacity" href="#">Export</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-danger rounded-full border border-white"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-full transition-colors hidden sm:block">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-auto bg-surface-alt p-margin-mobile md:p-margin-desktop">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<nav class="flex items-center gap-2 text-body-sm text-on-surface-variant mb-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-on-surface font-medium">Parts</span>
+</nav>
+<h1 class="font-page-title text-page-title text-on-surface">Parts Management</h1>
+<p class="font-body-base text-on-surface-variant mt-1">Manage auto parts information and technical specifications.</p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 border border-border-subtle bg-white text-on-surface rounded font-body-base font-medium hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Export
+                        </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-primary-container text-white rounded font-body-base font-medium hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Add New Part
+                        </button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-white border border-border-subtle rounded-lg shadow-sm flex flex-col">
+<!-- Search & Filter Bar -->
+<div class="p-4 border-b border-border-subtle flex flex-col lg:flex-row gap-4 items-center justify-between bg-white rounded-t-lg">
+<div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto flex-1">
+<!-- Search -->
+<div class="relative flex-1 sm:max-w-xs">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full pl-9 pr-3 py-2 border border-border-subtle rounded text-body-base focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-shadow" placeholder="Search part code or name..." type="text">
+</div>
+<!-- Filters -->
+<div class="flex gap-3 w-full sm:w-auto">
+<div class="relative flex-1 sm:w-40">
+<select class="w-full appearance-none pl-3 pr-8 py-2 border border-border-subtle rounded text-body-base bg-white focus:outline-none focus:ring-2 focus:ring-primary-container transition-shadow">
+<option value="">Category</option>
+<option value="engine">Engine</option>
+<option value="brake">Brake System</option>
+<option value="electrical">Electrical</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-sm pointer-events-none">arrow_drop_down</span>
+</div>
+<div class="relative flex-1 sm:w-32">
+<select class="w-full appearance-none pl-3 pr-8 py-2 border border-border-subtle rounded text-body-base bg-white focus:outline-none focus:ring-2 focus:ring-primary-container transition-shadow">
+<option value="">Status</option>
+<option value="active">Active</option>
+<option value="inactive">Inactive</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-sm pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<button class="w-full lg:w-auto flex items-center justify-center gap-1 px-3 py-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded text-body-base transition-colors shrink-0">
+<span class="material-symbols-outlined text-sm">filter_alt_off</span>
+                            Reset
+                        </button>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface border-b border-border-subtle font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-4 font-semibold cursor-pointer hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-1">
+                                            Part Code
+                                            <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span>
+</div>
+</th>
+<th class="py-3 px-4 font-semibold cursor-pointer hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-1">
+                                            Part Name
+                                            <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span>
+</div>
+</th>
+<th class="py-3 px-4 font-semibold">Category</th>
+<th class="py-3 px-4 font-semibold">Unit</th>
+<th class="py-3 px-4 font-semibold">Description</th>
+<th class="py-3 px-4 font-semibold">Status</th>
+<th class="py-3 px-4 font-semibold cursor-pointer hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-1">
+                                            Updated At
+                                            <span class="material-symbols-outlined text-[14px] opacity-100">arrow_downward</span>
+</div>
+</th>
+<th class="py-3 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-base text-on-surface divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-alt transition-colors group h-10">
+<td class="py-2 px-4 font-data-mono text-data-mono text-primary-container font-medium">BRK-4521</td>
+<td class="py-2 px-4 font-medium">Brake Pad Set - Front</td>
+<td class="py-2 px-4 text-on-surface-variant">Brake System</td>
+<td class="py-2 px-4 text-on-surface-variant text-center">Set</td>
+<td class="py-2 px-4 text-on-surface-variant max-w-[200px] truncate" title="Ceramic performance brake pads for standard sedans.">Ceramic performance brake p...</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="py-2 px-4 font-data-mono text-data-mono text-on-surface-variant">2023-10-24 14:30</td>
+<td class="py-2 px-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-danger rounded hover:bg-error-container transition-colors" title="Disable">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Zebra) -->
+<tr class="bg-surface-alt hover:bg-surface-container-low transition-colors group h-10">
+<td class="py-2 px-4 font-data-mono text-data-mono text-primary-container font-medium">ENG-1092</td>
+<td class="py-2 px-4 font-medium">Timing Belt Kit</td>
+<td class="py-2 px-4 text-on-surface-variant">Engine</td>
+<td class="py-2 px-4 text-on-surface-variant text-center">Kit</td>
+<td class="py-2 px-4 text-on-surface-variant max-w-[200px] truncate" title="Includes tensioner and water pump for V6 models.">Includes tensioner and wate...</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="py-2 px-4 font-data-mono text-data-mono text-on-surface-variant">2023-10-23 09:15</td>
+<td class="py-2 px-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-danger rounded hover:bg-error-container transition-colors" title="Disable">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-alt transition-colors group h-10">
+<td class="py-2 px-4 font-data-mono text-data-mono text-primary-container font-medium">ELC-8834</td>
+<td class="py-2 px-4 font-medium">Alternator 120A</td>
+<td class="py-2 px-4 text-on-surface-variant">Electrical</td>
+<td class="py-2 px-4 text-on-surface-variant text-center">Piece</td>
+<td class="py-2 px-4 text-on-surface-variant max-w-[200px] truncate" title="Remanufactured high-output alternator.">Remanufactured high-outpu...</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-surface-variant text-on-surface-variant border border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                            Inactive
+                                        </span>
+</td>
+<td class="py-2 px-4 font-data-mono text-data-mono text-on-surface-variant">2023-10-20 16:45</td>
+<td class="py-2 px-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-danger rounded hover:bg-error-container transition-colors" title="Disable">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 (Zebra) -->
+<tr class="bg-surface-alt hover:bg-surface-container-low transition-colors group h-10">
+<td class="py-2 px-4 font-data-mono text-data-mono text-primary-container font-medium">FLT-2210</td>
+<td class="py-2 px-4 font-medium">Oil Filter - Spin On</td>
+<td class="py-2 px-4 text-on-surface-variant">Engine</td>
+<td class="py-2 px-4 text-on-surface-variant text-center">Piece</td>
+<td class="py-2 px-4 text-on-surface-variant max-w-[200px] truncate" title="Standard spin-on oil filter for 4-cylinder engines.">Standard spin-on oil filt...</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="py-2 px-4 font-data-mono text-data-mono text-on-surface-variant">2023-10-18 11:20</td>
+<td class="py-2 px-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-danger rounded hover:bg-error-container transition-colors" title="Disable">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-alt transition-colors group h-10">
+<td class="py-2 px-4 font-data-mono text-data-mono text-primary-container font-medium">SUS-9901</td>
+<td class="py-2 px-4 font-medium">Shock Absorber - Rear</td>
+<td class="py-2 px-4 text-on-surface-variant">Suspension</td>
+<td class="py-2 px-4 text-on-surface-variant text-center">Piece</td>
+<td class="py-2 px-4 text-on-surface-variant max-w-[200px] truncate" title="Gas-charged rear shock absorber for heavy duty application.">Gas-charged rear shock ab...</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="py-2 px-4 font-data-mono text-data-mono text-on-surface-variant">2023-10-15 08:05</td>
+<td class="py-2 px-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container-low transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-danger rounded hover:bg-error-container transition-colors" title="Disable">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer / Pagination -->
+<div class="p-4 border-t border-border-subtle bg-white rounded-b-lg flex flex-col sm:flex-row justify-between items-center gap-4 text-body-sm text-on-surface-variant">
+<div>
+                            Showing <span class="font-medium text-on-surface">1</span> to <span class="font-medium text-on-surface">5</span> of <span class="font-medium text-on-surface">245</span> entries
+                        </div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded border border-border-subtle hover:bg-surface-container-low text-outline disabled:opacity-50 disabled:cursor-not-allowed transition-colors" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-primary-container text-white font-medium">1</button>
+<button class="px-2.5 py-1 rounded border border-border-subtle hover:bg-surface-container-low transition-colors">2</button>
+<button class="px-2.5 py-1 rounded border border-border-subtle hover:bg-surface-container-low transition-colors">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-2.5 py-1 rounded border border-border-subtle hover:bg-surface-container-low transition-colors">49</button>
+<button class="p-1 rounded border border-border-subtle hover:bg-surface-container-low text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

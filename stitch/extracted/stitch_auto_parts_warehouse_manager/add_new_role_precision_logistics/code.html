@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Create New Role - Precision Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#434b60",
+                      "tertiary-fixed": "#dae2fd",
+                      "on-primary-fixed-variant": "#173bab",
+                      "surface": "#f7f9fb",
+                      "on-surface-variant": "#444653",
+                      "on-primary-container": "#a8b8ff",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed": "#d3e4fe",
+                      "primary-container": "#1e40af",
+                      "danger": "#E11D48",
+                      "inverse-on-surface": "#eff1f3",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#d0e1fb",
+                      "outline": "#757684",
+                      "on-background": "#191c1e",
+                      "on-secondary-container": "#54647a",
+                      "warning": "#D97706",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#131b2e",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-high": "#e6e8ea",
+                      "primary": "#00288e",
+                      "success": "#059669",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-low": "#f2f4f6",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-error": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "outline-variant": "#c4c5d5",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#dde1ff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-container": "#eceef0",
+                      "surface-alt": "#F1F5F9",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-primary-fixed": "#001453",
+                      "on-surface": "#191c1e",
+                      "surface-tint": "#3755c3",
+                      "on-tertiary-container": "#b4bbd5",
+                      "surface-bright": "#f7f9fb",
+                      "border-subtle": "#E2E8F0",
+                      "background": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "surface-dim": "#d8dadc",
+                      "tertiary": "#2d3449",
+                      "secondary": "#505f76"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit-2": "8px",
+                      "unit-6": "24px",
+                      "unit-1": "4px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "unit-3": "12px",
+                      "unit-4": "16px",
+                      "base": "4px",
+                      "unit-8": "32px",
+                      "margin-desktop": "24px"
+              },
+              "fontFamily": {
+                      "body-base": [
+                              "Inter"
+                      ],
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "card-title": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "data-mono": [
+                              "jetbrainsMono"
+                      ],
+                      "page-title": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-base": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "card-title": [
+                              "16px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "page-title": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-base antialiased flex">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen py-unit-6 px-unit-4 fixed left-0 top-0 w-[240px] border-r border-outline-variant bg-surface z-50">
+<div class="mb-unit-8 px-unit-2 flex items-center gap-unit-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warehouse</span>
+</div>
+<div>
+<h1 class="text-card-title font-card-title text-primary">Precision Logistics</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Warehouse Management</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-unit-1 overflow-y-auto">
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-base text-body-base">Dashboard</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-body-base text-body-base">Parts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+<span class="font-body-base text-body-base">Warehouses</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-base text-body-base">Inventory</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-base text-body-base">Receipts</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-base text-body-base">Reports</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-base text-body-base">Users</span>
+</a>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg bg-secondary-container text-primary font-semibold cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-body-base text-body-base">Roles</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-0 md:ml-[240px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-margin-desktop bg-surface z-40 fixed top-0 right-0 w-full md:w-[calc(100%-240px)] h-16 border-b border-outline-variant transition-all duration-200 ease-in-out">
+<div class="flex-1 flex items-center">
+<!-- Mobile Menu Button -->
+<button class="md:hidden mr-4 text-on-surface hover:bg-surface-container p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex text-body-sm font-body-sm text-secondary gap-2 items-center">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Roles</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-medium">Create Role</span>
+</div>
+</div>
+<div class="flex items-center gap-unit-2">
+<button class="p-2 text-secondary hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="ml-unit-2 w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden cursor-pointer hover:ring-2 hover:ring-primary transition-all">
+<span class="material-symbols-outlined text-secondary">person</span>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 mt-16 p-margin-mobile md:p-margin-desktop max-w-7xl mx-auto w-full flex flex-col gap-unit-6">
+<div class="flex justify-between items-end pb-unit-4 border-b border-border-subtle">
+<div>
+<h2 class="text-page-title font-page-title text-on-surface">Create New Role</h2>
+<p class="text-body-base font-body-base text-secondary mt-1">Define permissions and access levels for a new user role.</p>
+</div>
+<div class="flex gap-unit-3">
+<button class="px-unit-4 py-unit-2 rounded bg-transparent border border-outline-variant text-secondary hover:bg-surface-container-high transition-colors text-body-base font-body-base">
+                        Cancel
+                    </button>
+<button class="px-unit-4 py-unit-2 rounded bg-[#1E40AF] text-on-primary hover:opacity-90 transition-opacity text-body-base font-body-base flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save Role
+                    </button>
+</div>
+</div>
+<!-- General Info Form -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl p-unit-6">
+<h3 class="text-section-title font-section-title text-on-surface mb-unit-4">General Information</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-unit-6">
+<div class="flex flex-col gap-unit-1">
+<label class="text-label-caps font-label-caps text-secondary uppercase" for="role-name">Role Name *</label>
+<input class="h-10 px-unit-3 rounded bg-surface-container-lowest border border-outline-variant focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] text-body-base font-body-base text-on-surface placeholder:text-outline outline-none transition-all" id="role-name" placeholder="e.g. Inventory Manager" type="text">
+</div>
+<div class="flex flex-col gap-unit-1 md:col-span-2">
+<label class="text-label-caps font-label-caps text-secondary uppercase" for="role-desc">Description</label>
+<textarea class="p-unit-3 rounded bg-surface-container-lowest border border-outline-variant focus:border-[#1E40AF] focus:ring-1 focus:ring-[#1E40AF] text-body-base font-body-base text-on-surface placeholder:text-outline outline-none transition-all resize-none" id="role-desc" placeholder="Briefly describe the responsibilities of this role..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- Permissions Matrix -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl overflow-hidden flex flex-col">
+<div class="p-unit-6 border-b border-border-subtle bg-surface">
+<h3 class="text-section-title font-section-title text-on-surface">Permissions</h3>
+<p class="text-body-sm font-body-sm text-secondary mt-1">Select the specific actions this role can perform across the system.</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-border-subtle">
+<th class="py-unit-3 px-unit-4 text-label-caps font-label-caps text-secondary uppercase w-1/3">Module</th>
+<th class="py-unit-3 px-unit-4 text-label-caps font-label-caps text-secondary uppercase text-center w-1/6">View</th>
+<th class="py-unit-3 px-unit-4 text-label-caps font-label-caps text-secondary uppercase text-center w-1/6">Create</th>
+<th class="py-unit-3 px-unit-4 text-label-caps font-label-caps text-secondary uppercase text-center w-1/6">Update</th>
+<th class="py-unit-3 px-unit-4 text-label-caps font-label-caps text-secondary uppercase text-center w-1/6">Delete</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle text-body-base font-body-base text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">dashboard</span> Dashboard
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" disabled="" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" disabled="" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" disabled="" type="checkbox">
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">settings_input_component</span> Parts
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2 pl-unit-8">
+<span class="material-symbols-outlined text-outline text-[18px]">category</span> Categories
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">warehouse</span> Warehouses
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">inventory_2</span> Inventory
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">receipt_long</span> Import Receipts
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">receipt_long</span> Export Receipts
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">fact_check</span> Stock Check
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 9 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">verified</span> Quality Checks
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 10 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">analytics</span> Reports
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" disabled="" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" disabled="" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" disabled="" type="checkbox">
+</td>
+</tr>
+<!-- Row 11 -->
+<tr class="hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">group</span> Users
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+<!-- Row 12 -->
+<tr class="bg-surface hover:bg-surface-alt transition-colors group">
+<td class="py-unit-3 px-unit-4 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">admin_panel_settings</span> Roles
+                                </td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+<td class="py-unit-3 px-unit-4 text-center">
+<input class="w-4 h-4 text-[#1E40AF] rounded border-outline-variant focus:ring-[#1E40AF] cursor-pointer" type="checkbox">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Create Export Receipt - Precision Logistics</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary-fixed": "#dde1ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "outline-variant": "#c4c5d5",
+                        "surface-alt": "#F1F5F9",
+                        "surface-container": "#eceef0",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "primary": "#00288e",
+                        "error-container": "#ffdad6",
+                        "border-subtle": "#E2E8F0",
+                        "surface": "#f7f9fb",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-fixed": "#dae2fd",
+                        "surface-tint": "#3755c3",
+                        "on-surface-variant": "#444653",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001453",
+                        "outline": "#757684",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-primary-fixed-variant": "#173bab",
+                        "tertiary-container": "#434b60",
+                        "secondary": "#505f76",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#2d3449",
+                        "error": "#ba1a1a",
+                        "success": "#059669",
+                        "warning": "#D97706",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-tertiary-container": "#b4bbd5",
+                        "on-secondary-container": "#54647a",
+                        "inverse-primary": "#b8c4ff",
+                        "background": "#f7f9fb",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-surface": "#191c1e",
+                        "on-primary-container": "#a8b8ff",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1e40af",
+                        "on-tertiary": "#ffffff",
+                        "danger": "#E11D48",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "24px",
+                        "unit-4": "16px",
+                        "base": "4px",
+                        "unit-6": "24px",
+                        "unit-2": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "unit-1": "4px",
+                        "unit-8": "32px",
+                        "unit-3": "12px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["jetbrainsMono"],
+                        "body-sm": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "section-title": ["Inter"],
+                        "page-title": ["Inter"],
+                        "card-title": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "page-title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "card-title": ["16px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .form-input-base {
+            @apply border border-outline-variant rounded-DEFAULT px-3 py-1.5 font-body-base text-body-base w-full focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-colors duration-150 bg-surface-container-lowest text-on-surface;
+        }
+        .form-label-base {
+            @apply font-body-sm text-body-sm font-medium text-secondary mb-1 block;
+        }
+        .table-cell-base {
+            @apply h-10 px-unit-2 border-b border-border-subtle font-body-base text-body-base align-middle;
+        }
+        .table-header-base {
+            @apply h-10 px-unit-2 border-b-2 border-border-subtle bg-surface font-label-caps text-label-caps text-secondary text-left align-middle uppercase;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen">
+<aside class="w-60 h-screen fixed left-0 top-0 border-r border-outline-variant bg-surface-container-low flex flex-col py-unit-4 px-unit-2 z-20">
+<div class="px-unit-4 mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">inventory</span>
+<div class="flex flex-col">
+<span class="text-section-title font-section-title text-primary tracking-tight font-bold">Precision Logistics</span>
+<span class="font-body-sm text-body-sm text-secondary">Warehouse Management</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1 w-full">
+<a class="flex items-center gap-3 px-unit-4 py-2.5 rounded-DEFAULT text-secondary hover:bg-surface-container-high transition-colors duration-150 font-body-base text-body-base" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-2.5 rounded-DEFAULT text-secondary hover:bg-surface-container-high transition-colors duration-150 font-body-base text-body-base" href="#">
+<span class="material-symbols-outlined text-xl">settings_input_component</span>
+<span>Parts</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-2.5 rounded-DEFAULT text-secondary hover:bg-surface-container-high transition-colors duration-150 font-body-base text-body-base" href="#">
+<span class="material-symbols-outlined text-xl">warehouse</span>
+<span>Warehouses</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-2.5 rounded-DEFAULT text-secondary hover:bg-surface-container-high transition-colors duration-150 font-body-base text-body-base" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-2.5 rounded-DEFAULT bg-secondary-container text-on-secondary-container font-semibold opacity-90 transition-all duration-100 font-body-base text-body-base" href="#">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+<span>Receipts</span>
+</a>
+<a class="flex items-center gap-3 px-unit-4 py-2.5 rounded-DEFAULT text-secondary hover:bg-surface-container-high transition-colors duration-150 font-body-base text-body-base" href="#">
+<span class="material-symbols-outlined text-xl">assessment</span>
+<span>Reports</span>
+</a>
+</nav>
+</aside>
+<header class="h-14 fixed top-0 right-0 z-10 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-240px)] ml-[240px]">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-sm">search</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-caps text-label-caps font-bold ml-2">
+                JD
+            </div>
+</div>
+</header>
+<main class="ml-[240px] pt-14 p-margin-desktop min-h-screen flex flex-col">
+<div class="mb-unit-6">
+<nav class="flex items-center gap-2 font-body-sm text-body-sm text-secondary mb-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Export Receipts</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-on-background font-medium">Create Export Receipt</span>
+</nav>
+<h1 class="font-page-title text-page-title text-on-background flex items-center gap-3">
+                Create Export Receipt
+                <span class="bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded-full uppercase inline-flex items-center">
+                    Draft
+                </span>
+</h1>
+</div>
+<section class="bg-surface-container-lowest border border-border-subtle rounded-DEFAULT p-unit-4 mb-unit-6">
+<h2 class="font-section-title text-section-title text-on-background mb-unit-4">Receipt Information</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-unit-4 gap-y-unit-4">
+<div class="flex flex-col">
+<label class="form-label-base">Receipt Code</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-secondary material-symbols-outlined text-[16px]">tag</span>
+<input class="form-input-base bg-surface-container-low pl-9 text-secondary font-data-mono text-data-mono cursor-default border-dashed" readonly="" type="text" value="EX-20231027-0012">
+</div>
+</div>
+<div class="flex flex-col">
+<label class="form-label-base">Source Warehouse <span class="text-error">*</span></label>
+<select class="form-input-base appearance-none">
+<option disabled="" selected="" value="">Select warehouse...</option>
+<option value="WH-A">Main Distribution Center (WH-A)</option>
+<option value="WH-B">Regional Hub South (WH-B)</option>
+<option value="WH-C">Overflow Facility (WH-C)</option>
+</select>
+</div>
+<div class="flex flex-col">
+<label class="form-label-base">Export Date <span class="text-error">*</span></label>
+<input class="form-input-base" type="date" value="2023-10-27">
+</div>
+<div class="flex flex-col">
+<label class="form-label-base">Receiver / Department <span class="text-error">*</span></label>
+<input class="form-input-base" placeholder="e.g. Maintenance Team Alpha" type="text">
+</div>
+<div class="flex flex-col">
+<label class="form-label-base">Export Reason <span class="text-error">*</span></label>
+<select class="form-input-base appearance-none">
+<option value="repair">Repair</option>
+<option selected="" value="maintenance">Maintenance</option>
+<option value="external">External Sale</option>
+<option value="internal">Internal Transfer</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="flex flex-col">
+<label class="form-label-base">Created By</label>
+<input class="form-input-base bg-surface-container-low text-secondary cursor-default" readonly="" type="text" value="John Doe (Current User)">
+</div>
+<div class="flex flex-col xl:col-span-2">
+<label class="form-label-base">Note</label>
+<input class="form-input-base" placeholder="Optional details regarding this export..." type="text">
+</div>
+</div>
+</section>
+<section class="bg-surface-container-lowest border border-border-subtle rounded-DEFAULT flex flex-col flex-grow mb-unit-6 overflow-hidden">
+<div class="p-unit-4 border-b border-border-subtle flex justify-between items-center bg-surface-container-lowest">
+<h2 class="font-section-title text-section-title text-on-background">Export Items</h2>
+<button class="bg-secondary-container text-on-secondary-container font-body-sm text-body-sm font-medium px-3 py-1.5 rounded-DEFAULT flex items-center gap-1 hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    Add Row
+                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr>
+<th class="table-header-base w-12 text-center">#</th>
+<th class="table-header-base w-64">Part</th>
+<th class="table-header-base w-32">Part Code</th>
+<th class="table-header-base w-32 text-right">Available Qty</th>
+<th class="table-header-base w-32">Requested Qty</th>
+<th class="table-header-base w-24">Unit</th>
+<th class="table-header-base">Note</th>
+<th class="table-header-base w-12 text-center">Act</th>
+</tr>
+</thead>
+<tbody class="bg-surface-container-lowest">
+<tr class="even:bg-surface-alt border-b border-border-subtle hover:bg-surface-container transition-colors">
+<td class="table-cell-base text-center text-secondary font-data-mono text-data-mono">1</td>
+<td class="table-cell-base">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-secondary">build</span>
+</div>
+<span class="font-medium text-on-surface">Industrial Oil Filter X-200</span>
+</div>
+</td>
+<td class="table-cell-base font-data-mono text-data-mono text-secondary">FLT-001</td>
+<td class="table-cell-base text-right font-data-mono text-data-mono text-success font-medium">50</td>
+<td class="table-cell-base">
+<input class="form-input-base w-24 text-right font-data-mono text-data-mono py-1" min="1" type="number" value="10">
+</td>
+<td class="table-cell-base text-secondary">pcs</td>
+<td class="table-cell-base">
+<input class="form-input-base py-1 bg-transparent border-transparent hover:border-outline-variant focus:bg-surface-container-lowest" placeholder="Standard issue" type="text">
+</td>
+<td class="table-cell-base text-center">
+<button class="text-secondary hover:text-error transition-colors flex items-center justify-center w-full">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<tr class="bg-error-container/40 border-b border-error-container hover:bg-error-container/60 transition-colors relative">
+<td class="table-cell-base text-center text-error font-data-mono text-data-mono font-medium">2</td>
+<td class="table-cell-base">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-error">settings</span>
+</div>
+<span class="font-medium text-on-surface">Heavy Duty Brake Pad Assy</span>
+</div>
+</td>
+<td class="table-cell-base font-data-mono text-data-mono text-secondary">BRK-002</td>
+<td class="table-cell-base text-right font-data-mono text-data-mono text-on-surface font-medium">50</td>
+<td class="table-cell-base py-2">
+<div class="flex flex-col">
+<input class="form-input-base w-24 text-right font-data-mono text-data-mono py-1 border-error focus:ring-error focus:border-error bg-surface-container-lowest text-error font-bold" min="1" type="number" value="65">
+</div>
+</td>
+<td class="table-cell-base text-secondary">set</td>
+<td class="table-cell-base py-2">
+<div class="flex flex-col">
+<input class="form-input-base py-1 bg-transparent border-transparent hover:border-outline-variant focus:bg-surface-container-lowest" placeholder="Urgent replacement" type="text">
+<div class="flex items-center gap-1 text-error font-body-sm text-body-sm mt-1 absolute bottom-1 left-[calc(100%-250px)] whitespace-nowrap">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                                        Error: Requested quantity exceeds available stock.
+                                    </div>
+</div>
+</td>
+<td class="table-cell-base text-center">
+<button class="text-error hover:text-on-error-container transition-colors flex items-center justify-center w-full">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-unit-3 bg-surface-container-lowest border-t border-border-subtle flex items-center justify-center">
+<button class="text-secondary hover:text-primary font-body-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+                    Add another item
+                </button>
+</div>
+</section>
+<div class="mt-auto border-t border-border-subtle pt-unit-4 flex flex-col md:flex-row justify-between items-center gap-4 bg-background pb-unit-4">
+<div class="flex items-center gap-6 font-body-base text-body-base text-on-surface bg-surface-container-low px-4 py-2 rounded-DEFAULT border border-border-subtle">
+<div class="flex items-center gap-2">
+<span class="text-secondary font-medium">Total Items:</span>
+<span class="font-data-mono text-data-mono font-bold">2</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-secondary font-medium">Total Requested Qty:</span>
+<span class="font-data-mono text-data-mono font-bold text-error">75</span>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none border border-outline-variant text-on-surface hover:bg-surface-container-high px-4 py-2 rounded-DEFAULT font-body-base text-body-base font-medium transition-colors duration-150">
+                    Cancel
+                </button>
+<button class="flex-1 md:flex-none bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed px-4 py-2 rounded-DEFAULT font-body-base text-body-base font-medium transition-colors duration-150">
+                    Save Draft
+                </button>
+<button class="flex-1 md:flex-none bg-surface-variant text-outline opacity-60 cursor-not-allowed px-4 py-2 rounded-DEFAULT font-body-base text-body-base font-medium flex items-center justify-center gap-2 transition-all" disabled="">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                    Complete Export
+                </button>
+</div>
+</div>
+</main>
+</body></html>

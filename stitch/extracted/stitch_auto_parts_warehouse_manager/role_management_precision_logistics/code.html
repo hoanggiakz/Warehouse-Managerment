@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Role Management - Precision Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#434b60",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-primary-fixed-variant": "#173bab",
+                        "surface": "#f7f9fb",
+                        "on-surface-variant": "#444653",
+                        "on-primary-container": "#a8b8ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary-container": "#1e40af",
+                        "danger": "#E11D48",
+                        "inverse-on-surface": "#eff1f3",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#d0e1fb",
+                        "outline": "#757684",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#54647a",
+                        "warning": "#D97706",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "primary": "#00288e",
+                        "success": "#059669",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dde1ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container": "#eceef0",
+                        "surface-alt": "#F1F5F9",
+                        "inverse-primary": "#b8c4ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed": "#001453",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#3755c3",
+                        "on-tertiary-container": "#b4bbd5",
+                        "surface-bright": "#f7f9fb",
+                        "border-subtle": "#E2E8F0",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "surface-dim": "#d8dadc",
+                        "tertiary": "#2d3449",
+                        "secondary": "#505f76"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit-2": "8px",
+                        "unit-6": "24px",
+                        "unit-1": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "unit-3": "12px",
+                        "unit-4": "16px",
+                        "base": "4px",
+                        "unit-8": "32px",
+                        "margin-desktop": "24px"
+                    },
+                    "fontFamily": {
+                        "body-base": ["Inter"],
+                        "section-title": ["Inter"],
+                        "card-title": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "data-mono": ["jetbrainsMono"],
+                        "page-title": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "card-title": ["16px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "data-mono": ["13px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "page-title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-base antialiased min-h-screen flex text-body-base overflow-x-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface border-r border-outline-variant flex flex-col py-unit-6 px-unit-4 z-50 transition-transform duration-300 md:translate-x-0 -translate-x-full hidden md:flex" id="sidebar">
+<div class="flex items-center gap-unit-3 mb-unit-8 px-unit-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-bold">PL</div>
+<div>
+<h1 class="text-card-title font-card-title text-primary">Precision Logistics</h1>
+<p class="text-body-sm font-body-sm text-secondary">Warehouse Management</p>
+</div>
+</div>
+<ul class="flex flex-col gap-unit-1 flex-grow">
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-body-base">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-body-base">Parts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="warehouse">warehouse</span>
+<span class="font-body-base">Warehouses</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-base">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-base">Receipts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="font-body-base">Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg text-secondary hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+<span class="font-body-base">Users</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-unit-3 px-unit-3 py-unit-2 rounded-lg bg-secondary-container text-primary font-semibold cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined text-[20px] filled-icon" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-body-base">Roles</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 md:ml-[240px]">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-240px)] h-16 flex justify-between items-center px-margin-mobile md:px-margin-desktop bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface" id="menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex items-center gap-2 text-body-sm text-secondary">
+<span class="hover:text-primary cursor-pointer transition-colors">Home</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-medium">Roles</span>
+</div>
+</div>
+<div class="flex items-center gap-unit-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border-subtle rounded text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent w-64 transition-all" placeholder="Search roles..." type="text">
+</div>
+<button class="text-secondary hover:text-primary transition-colors hover:bg-surface-container p-2 rounded-full hidden md:block">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors hover:bg-surface-container p-2 rounded-full hidden md:block">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container border border-outline-variant overflow-hidden cursor-pointer flex items-center justify-center text-primary font-bold text-xs">
+                    JD
+                </div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop mt-16 max-w-7xl mx-auto w-full">
+<!-- Page Header Section -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-unit-6">
+<div>
+<h2 class="text-page-title font-page-title text-on-surface">Role Management</h2>
+<p class="text-body-sm text-secondary mt-1">Configure access levels and permissions for warehouse personnel.</p>
+</div>
+<button class="bg-[#1E40AF] hover:bg-primary text-white px-unit-4 py-unit-2 rounded flex items-center gap-2 transition-colors text-body-sm font-medium shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add New Role
+                </button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg flex flex-col h-[calc(100vh-200px)] min-h-[400px]">
+<!-- Table Toolbar -->
+<div class="p-unit-4 border-b border-border-subtle flex flex-col sm:flex-row justify-between items-center gap-4 bg-surface-bright rounded-t-lg">
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<span class="material-symbols-outlined text-outline text-[18px]">filter_list</span>
+<select class="bg-transparent border-none text-body-sm font-medium text-on-surface focus:ring-0 cursor-pointer p-0 pr-6">
+<option>All Statuses</option>
+<option>Active</option>
+<option>Inactive</option>
+</select>
+</div>
+<div class="text-body-sm text-secondary font-medium">
+                        Showing 6 Roles
+                    </div>
+</div>
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-unit-4 py-unit-3 bg-surface border-b border-border-subtle text-label-caps font-label-caps text-secondary uppercase tracking-wider sticky top-0">
+<div class="col-span-3">Role Name</div>
+<div class="col-span-4">Description</div>
+<div class="col-span-2 text-right">Users</div>
+<div class="col-span-2">Status</div>
+<div class="col-span-1 text-right">Actions</div>
+</div>
+<!-- Table Body (Scrollable) -->
+<div class="flex-1 overflow-y-auto">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 px-unit-4 py-unit-2 border-b border-border-subtle hover:bg-surface-alt transition-colors items-center h-10 group bg-surface-container-lowest">
+<div class="col-span-3 font-medium text-on-surface text-body-sm">Super Admin</div>
+<div class="col-span-4 text-secondary text-body-sm truncate">Full system access, configuration, and user management.</div>
+<div class="col-span-2 text-right font-data-mono text-data-mono text-on-surface">3</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">Active</span>
+</div>
+<div class="col-span-1 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 px-unit-4 py-unit-2 border-b border-border-subtle hover:bg-surface-alt transition-colors items-center h-10 group bg-surface-bright">
+<div class="col-span-3 font-medium text-on-surface text-body-sm">Warehouse Manager</div>
+<div class="col-span-4 text-secondary text-body-sm truncate">Oversees specific warehouse operations, inventory overrides.</div>
+<div class="col-span-2 text-right font-data-mono text-data-mono text-on-surface">12</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">Active</span>
+</div>
+<div class="col-span-1 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-secondary hover:text-danger transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 px-unit-4 py-unit-2 border-b border-border-subtle hover:bg-surface-alt transition-colors items-center h-10 group bg-surface-container-lowest">
+<div class="col-span-3 font-medium text-on-surface text-body-sm">Inventory Clerk</div>
+<div class="col-span-4 text-secondary text-body-sm truncate">Standard stock counting, receiving, and basic reporting.</div>
+<div class="col-span-2 text-right font-data-mono text-data-mono text-on-surface">45</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">Active</span>
+</div>
+<div class="col-span-1 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-secondary hover:text-danger transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 px-unit-4 py-unit-2 border-b border-border-subtle hover:bg-surface-alt transition-colors items-center h-10 group bg-surface-bright">
+<div class="col-span-3 font-medium text-on-surface text-body-sm">Forklift Operator</div>
+<div class="col-span-4 text-secondary text-body-sm truncate">Task execution, put-away, and picking lists view only.</div>
+<div class="col-span-2 text-right font-data-mono text-data-mono text-on-surface">108</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">Active</span>
+</div>
+<div class="col-span-1 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-secondary hover:text-danger transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-12 gap-4 px-unit-4 py-unit-2 border-b border-border-subtle hover:bg-surface-alt transition-colors items-center h-10 group bg-surface-container-lowest">
+<div class="col-span-3 font-medium text-on-surface text-body-sm text-secondary">Auditor (External)</div>
+<div class="col-span-4 text-secondary text-body-sm truncate text-outline">Read-only access to historical reports and inventory logs.</div>
+<div class="col-span-2 text-right font-data-mono text-data-mono text-outline">0</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">Inactive</span>
+</div>
+<div class="col-span-1 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-secondary hover:text-danger transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation Overlay -->
+<div class="fixed inset-0 bg-on-background/50 z-40 hidden" id="mobile-overlay"></div>
+<script>
+        // Simple mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobile-overlay');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Add New User - Precision Logistics</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#2d3449",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-container": "#b4bbd5",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadc",
+                        "surface-container": "#eceef0",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary-fixed": "#0b1c30",
+                        "border-subtle": "#E2E8F0",
+                        "primary": "#00288e",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "on-primary-container": "#a8b8ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-primary-fixed": "#001453",
+                        "outline": "#757684",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#d3e4fe",
+                        "success": "#059669",
+                        "surface-tint": "#3755c3",
+                        "primary-fixed": "#dde1ff",
+                        "on-primary-fixed-variant": "#173bab",
+                        "primary-container": "#1e40af",
+                        "inverse-primary": "#b8c4ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-surface-variant": "#444653",
+                        "warning": "#D97706",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#434b60",
+                        "surface": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed": "#131b2e",
+                        "secondary": "#505f76",
+                        "on-surface": "#191c1e",
+                        "surface-container-highest": "#e0e3e5",
+                        "danger": "#E11D48",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#d0e1fb",
+                        "surface-alt": "#F1F5F9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit-6": "24px",
+                        "gutter": "16px",
+                        "unit-4": "16px",
+                        "margin-desktop": "24px",
+                        "unit-1": "4px",
+                        "unit-2": "8px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "unit-3": "12px",
+                        "unit-8": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter", "sans-serif"],
+                        "section-title": ["Inter", "sans-serif"],
+                        "card-title": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "data-mono": ["jetbrainsMono", "monospace"],
+                        "body-base": ["Inter", "sans-serif"],
+                        "page-title": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "card-title": ["16px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "data-mono": ["13px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "page-title": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest fixed left-0 top-0 h-full w-[240px] border-r border-border-subtle flex flex-col h-full py-unit-6 px-unit-2 z-50 hidden md:flex">
+<div class="mb-8 px-4">
+<h1 class="font-page-title text-page-title font-bold text-primary">Precision Logistics</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Warehouse Management</p>
+</div>
+<ul class="flex flex-col gap-1 w-full flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]">settings_input_component</span>
+                    Parts
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]">warehouse</span>
+                    Warehouses
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                    Inventory
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+                    Receipts
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary hover:bg-surface-container-high transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+                    Reports
+                </a>
+</li>
+</ul>
+</nav>
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest fixed top-0 right-0 w-full md:w-[calc(100%-240px)] z-40 border-b border-border-subtle flex justify-between items-center h-16 px-margin-desktop">
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-2 w-64 focus-within:ring-2 focus-within:ring-primary border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-[20px]">search</span>
+<input class="bg-transparent border-none outline-none w-full font-body-sm text-body-sm text-on-surface p-0 focus:ring-0" placeholder="Search..." type="text">
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img alt="Manager Profile" class="object-cover w-full h-full" data-alt="A professional headshot of a logistics manager in a bright, modern office setting. The lighting is clean and corporate, featuring sharp focus and neutral tones. The mood is confident and reliable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5zUs8lmFdFRHxqZuiotBdU6Q4Vw1cfd0lXH120-XlYSWStWQk5JhytIotaIxr0AbfJmJpksO7K1hkdviifay-wllh0qjxDFkeT4teJIvxkj1gpWjUmV8_nqR6U3uDx8ASHS-xGmsjDfl_RohMnfIHyoVBzTNhkNXKDDLYrjkoUqH2MXGSGFHOa9uPP7jjzai4ctdIX5_UUBDmXqPfzpQh1yWHX5qyAOBmlEoWBbeGfqKuZhe_drwKiA">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full md:ml-[240px] pt-16 min-h-screen bg-background">
+<div class="p-margin-mobile md:p-margin-desktop max-w-5xl mx-auto">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant mb-6">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">home</span> Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Users</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-medium">Add User</span>
+</nav>
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="font-page-title text-page-title text-on-surface">Add New User</h2>
+<p class="font-body-base text-body-base text-on-surface-variant mt-1">Create a new system account and assign access privileges.</p>
+</div>
+<!-- Form Card -->
+<form class="bg-surface-container-lowest border border-border-subtle rounded-lg p-unit-6 md:p-unit-8 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- Section Title (Optional structural grouping) -->
+<div class="col-span-1 md:col-span-2 pb-2 border-b border-surface-container">
+<h3 class="font-section-title text-section-title text-on-surface">Personal Information</h3>
+</div>
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface" for="fullName">Full Name</label>
+<input class="h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-base text-body-base text-on-surface transition-shadow" id="fullName" name="fullName" placeholder="e.g. Jane Doe" required="" type="text">
+</div>
+<!-- Username -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface" for="username">Username</label>
+<input class="h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-base text-body-base text-on-surface transition-shadow" id="username" name="username" placeholder="jdoe123" required="" type="text">
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface" for="email">Email Address</label>
+<input class="h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-base text-body-base text-on-surface transition-shadow" id="email" name="email" placeholder="jane.doe@company.com" required="" type="email">
+</div>
+<!-- Phone -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface" for="phone">Phone Number</label>
+<input class="h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-base text-body-base text-on-surface transition-shadow" id="phone" name="phone" placeholder="+1 (555) 000-0000" type="tel">
+</div>
+<div class="col-span-1 md:col-span-2 pb-2 mt-4 border-b border-surface-container">
+<h3 class="font-section-title text-section-title text-on-surface">Account Settings</h3>
+</div>
+<!-- Role (Dropdown) -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface" for="role">Role</label>
+<div class="relative">
+<select class="appearance-none w-full h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-base text-body-base text-on-surface transition-shadow pr-10" id="role" name="role">
+<option disabled="" selected="" value="">Select a role...</option>
+<option value="admin">Administrator</option>
+<option value="manager">Warehouse Manager</option>
+<option value="clerk">Inventory Clerk</option>
+<option value="viewer">Read-Only Viewer</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Account Status (Select simulating a toggle setup for clear industrial UX) -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface" for="status">Account Status</label>
+<div class="relative">
+<select class="appearance-none w-full h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-base text-body-base text-on-surface transition-shadow pr-10" id="status" name="status">
+<option selected="" value="active">Active</option>
+<option value="inactive">Inactive</option>
+<option value="suspended">Suspended</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-2 md:col-span-2 max-w-md">
+<label class="font-label-caps text-label-caps text-on-surface" for="password">Initial Password</label>
+<input class="h-10 px-3 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-base text-body-base text-on-surface transition-shadow" id="password" name="password" placeholder="••••••••" required="" type="password">
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Must be at least 8 characters long and contain a number.</p>
+</div>
+</div>
+<!-- Form Actions -->
+<div class="mt-8 pt-6 border-t border-border-subtle flex flex-col-reverse md:flex-row justify-end gap-4">
+<button class="px-6 py-2 border border-outline-variant text-primary rounded font-card-title text-card-title hover:bg-surface-container-low transition-colors focus:ring-2 focus:ring-primary focus:outline-none w-full md:w-auto" type="button">
+                        Cancel
+                    </button>
+<button class="px-6 py-2 bg-primary-container text-on-primary-container rounded font-card-title text-card-title hover:opacity-90 transition-opacity focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none w-full md:w-auto" type="submit">
+                        Save User
+                    </button>
+</div>
+</form>
+</div>
+</main>
+</body></html>
