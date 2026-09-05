@@ -17,8 +17,8 @@ export default async function EditPartPage({ params }: { params: { id: string } 
 
   const serializedPart = {
     ...part,
-    purchasePrice: part.purchasePrice.toString(),
-    salePrice: part.salePrice.toString(),
+    purchasePrice: part.purchasePrice != null ? part.purchasePrice.toString() : '0.00',
+    salePrice: part.salePrice != null ? part.salePrice.toString() : '0.00',
   };
 
   return (

@@ -32,8 +32,8 @@ export default async function PartsPage({
   // Serialize Decimal values for Client Component
   const serializedParts = parts.map(p => ({
     ...p,
-    purchasePrice: p.purchasePrice.toString(),
-    salePrice: p.salePrice.toString(),
+    purchasePrice: p.purchasePrice != null ? p.purchasePrice.toString() : '0.00',
+    salePrice: p.salePrice != null ? p.salePrice.toString() : '0.00',
   }));
 
   return (
