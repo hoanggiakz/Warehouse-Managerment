@@ -142,6 +142,17 @@ export const DEFAULT_ROLE_PERMISSIONS: Record<string, string[]> = {
   ],
 };
 
-export function hasPermission(userPermissions: string[], requiredPermission: string): boolean {
-  return userPermissions.includes(requiredPermission);
+export function hasPermission(userPermissions: string[] | string | undefined | null, requiredPermission: string): boolean {
+  if (!userPermissions) return false;
+  if (Array.isArray(userPermissions)) {
+    return userPermissions.includes(requiredPermission);
+  }
+  if (typeof userPermissions === 'string') {
+    try {
+      const parsed = JSON.parse(userPermissions);
+      if (Array.isArray(parsed)) return parsed.includes(requiredPermission);
+    } catch {}
+    return userPermissions.includes(requiredPermission);
+  }
+  return false;
 }
