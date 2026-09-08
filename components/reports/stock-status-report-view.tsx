@@ -31,11 +31,23 @@ interface StockStatusReportViewProps {
 }
 
 export function StockStatusReportView({ data }: StockStatusReportViewProps) {
+  const summary = data?.summary || {
+    NORMAL: { count: 0, quantity: 0, percentage: 0 },
+    LOW: { count: 0, quantity: 0, percentage: 0 },
+    OUT: { count: 0, quantity: 0, percentage: 0 },
+    OVER: { count: 0, quantity: 0, percentage: 0 },
+  };
+
+  const normal = summary.NORMAL || { count: 0, quantity: 0, percentage: 0 };
+  const low = summary.LOW || { count: 0, quantity: 0, percentage: 0 };
+  const out = summary.OUT || { count: 0, quantity: 0, percentage: 0 };
+  const over = summary.OVER || { count: 0, quantity: 0, percentage: 0 };
+
   const distributionSegments = [
-    { label: 'Normal Stock', value: data.summary.NORMAL.count, color: 'bg-emerald-500' },
-    { label: 'Low Stock', value: data.summary.LOW.count, color: 'bg-amber-500' },
-    { label: 'Out of Stock', value: data.summary.OUT.count, color: 'bg-rose-500' },
-    { label: 'Overstock', value: data.summary.OVER.count, color: 'bg-blue-500' },
+    { label: 'Normal Stock', value: normal.count, color: 'bg-emerald-500' },
+    { label: 'Low Stock', value: low.count, color: 'bg-amber-500' },
+    { label: 'Out of Stock', value: out.count, color: 'bg-rose-500' },
+    { label: 'Overstock', value: over.count, color: 'bg-blue-500' },
   ];
 
   return (
@@ -48,10 +60,10 @@ export function StockStatusReportView({ data }: StockStatusReportViewProps) {
             <CheckCircle2 className="size-4 text-emerald-600" />
           </div>
           <div className="mt-2 text-2xl font-bold text-emerald-950">
-            {data.summary.NORMAL.count} <span className="text-sm font-normal text-emerald-700">records</span>
+            {normal.count} <span className="text-sm font-normal text-emerald-700">records</span>
           </div>
           <p className="mt-1 text-xs text-emerald-700">
-            {data.summary.NORMAL.quantity.toLocaleString()} units ({data.summary.NORMAL.percentage}%)
+            {normal.quantity.toLocaleString()} units ({normal.percentage}%)
           </p>
         </div>
 
@@ -61,10 +73,10 @@ export function StockStatusReportView({ data }: StockStatusReportViewProps) {
             <AlertTriangle className="size-4 text-amber-600" />
           </div>
           <div className="mt-2 text-2xl font-bold text-amber-950">
-            {data.summary.LOW.count} <span className="text-sm font-normal text-amber-700">records</span>
+            {low.count} <span className="text-sm font-normal text-amber-700">records</span>
           </div>
           <p className="mt-1 text-xs text-amber-700">
-            {data.summary.LOW.quantity.toLocaleString()} units ({data.summary.LOW.percentage}%)
+            {low.quantity.toLocaleString()} units ({low.percentage}%)
           </p>
         </div>
 
@@ -74,10 +86,10 @@ export function StockStatusReportView({ data }: StockStatusReportViewProps) {
             <AlertCircle className="size-4 text-rose-600" />
           </div>
           <div className="mt-2 text-2xl font-bold text-rose-950">
-            {data.summary.OUT.count} <span className="text-sm font-normal text-rose-700">records</span>
+            {out.count} <span className="text-sm font-normal text-rose-700">records</span>
           </div>
           <p className="mt-1 text-xs text-rose-700">
-            {data.summary.OUT.quantity.toLocaleString()} units ({data.summary.OUT.percentage}%)
+            {out.quantity.toLocaleString()} units ({out.percentage}%)
           </p>
         </div>
 
@@ -87,10 +99,10 @@ export function StockStatusReportView({ data }: StockStatusReportViewProps) {
             <TrendingUp className="size-4 text-blue-600" />
           </div>
           <div className="mt-2 text-2xl font-bold text-blue-950">
-            {data.summary.OVER.count} <span className="text-sm font-normal text-blue-700">records</span>
+            {over.count} <span className="text-sm font-normal text-blue-700">records</span>
           </div>
           <p className="mt-1 text-xs text-blue-700">
-            {data.summary.OVER.quantity.toLocaleString()} units ({data.summary.OVER.percentage}%)
+            {over.quantity.toLocaleString()} units ({over.percentage}%)
           </p>
         </div>
       </div>
@@ -98,7 +110,7 @@ export function StockStatusReportView({ data }: StockStatusReportViewProps) {
       {/* Distribution Progress */}
       <div className="rounded-xl border bg-white p-5 shadow-sm">
         <h3 className="text-sm font-semibold text-gray-900 mb-3">Overall Stock Health Distribution</h3>
-        <DistributionBar segments={distributionSegments} totalValue={data.totalRecords} />
+        <DistributionBar segments={distributionSegments} totalValue={data?.totalRecords || 0} />
       </div>
 
       {/* Drilldown Table */}
@@ -108,7 +120,7 @@ export function StockStatusReportView({ data }: StockStatusReportViewProps) {
             <h3 className="text-base font-semibold text-gray-900">Inventory Status Drill-down</h3>
             <p className="text-xs text-gray-500">Live stock level vs minimum safety and maximum limits</p>
           </div>
-          <span className="text-xs text-gray-500">Showing top {data.items.length} records</span>
+          <span className="text-xs text-gray-500">Showing top {(data?.items || []).length} records</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -125,8 +137,8 @@ export function StockStatusReportView({ data }: StockStatusReportViewProps) {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {data.items.length > 0 ? (
-                data.items.map((item) => {
+              {(data?.items || []).length > 0 ? (
+                (data?.items || []).map((item) => {
                   let statusBadge = (
                     <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                       NORMAL

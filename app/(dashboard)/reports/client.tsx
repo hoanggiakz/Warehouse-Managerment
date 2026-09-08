@@ -93,10 +93,19 @@ export function ReportsClient({
 
   // Data & Loading States
   const [reportData, setReportData] = useState<any>(null);
+  const [loadedTab, setLoadedTab] = useState<TabType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const [isExporting, setIsExporting] = useState<boolean>(false);
+
+  const handleTabChange = (newTab: TabType) => {
+    if (newTab === activeTab) return;
+    setActiveTab(newTab);
+    setReportData(null);
+    setLoadedTab(null);
+    setLoading(true);
+  };
 
   const fetchCurrentReport = useCallback(() => {
     setLoading(true);
@@ -148,6 +157,7 @@ export function ReportsClient({
             res = await getInventoryOverviewReport(filterParams);
         }
         setReportData(res);
+        setLoadedTab(activeTab);
       } catch (err: any) {
         console.error('Failed to load report:', err);
         setError(err.message || 'Unable to load report.');
@@ -221,7 +231,7 @@ export function ReportsClient({
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabChange(tab.id)}
                 className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-3.5 py-2.5 text-xs font-semibold transition-all ${
                   isSelected
                     ? 'border-primary text-primary bg-primary/5 rounded-t-lg'
@@ -257,13 +267,21 @@ export function ReportsClient({
         activeTabName={accessibleTabs.find((t) => t.id === activeTab)?.label}
       />
 
-      {/* Loading State */}
-      {loading ? (
-        <div className="flex flex-col items-center justify-center rounded-xl border bg-white p-16 shadow-sm">
-          <Loader2 className="size-8 animate-spin text-primary mb-3" />
-          <p className="text-sm font-medium text-gray-700">Aggregating transactional analytics...</p>
-          <p className="text-xs text-gray-400 mt-1">Executing safe server-side queries</p>
-        </div>
+      {/* Loading / Error / Data State */}
+      {loading || !reportData || loadedTab !== activeTab ? (
+        error ? (
+          <div className="rounded-xl border border-rose-200 bg-rose-50/50 p-8 text-center shadow-sm">
+            <AlertCircle className="size-8 text-rose-600 mx-auto mb-2" />
+            <h4 className="text-base font-semibold text-rose-900">Error Loading Report</h4>
+            <p className="text-sm text-rose-700 mt-1">{error}</p>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center rounded-xl border bg-white p-16 shadow-sm">
+            <Loader2 className="size-8 animate-spin text-primary mb-3" />
+            <p className="text-sm font-medium text-gray-700">Aggregating transactional analytics...</p>
+            <p className="text-xs text-gray-400 mt-1">Executing safe server-side queries</p>
+          </div>
+        )
       ) : error ? (
         <div className="rounded-xl border border-rose-200 bg-rose-50/50 p-8 text-center shadow-sm">
           <AlertCircle className="size-8 text-rose-600 mx-auto mb-2" />
