@@ -1,6 +1,7 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 import { SessionPayload } from './types';
+import { PERMISSIONS } from '../rbac/permissions';
 
 const DEFAULT_FALLBACK_SECRET = 'maluzen-warehouse-default-fallback-auth-secret-key-32-bytes-minimum!';
 const secretKey = process.env.AUTH_SECRET || DEFAULT_FALLBACK_SECRET;
@@ -47,7 +48,14 @@ export async function createSession(payload: SessionPayload) {
 export async function getSession(): Promise<SessionPayload | null> {
   const session = cookies().get(COOKIE_NAME)?.value;
   if (!session) return null;
-  return await decrypt(session);
+  const decrypted = await decrypt(session);
+  if (!decrypted) return null;
+
+  if (decrypted.role === 'Administrator') {
+    decrypted.permissions = Object.values(PERMISSIONS);
+  }
+
+  return decrypted;
 }
 
 export async function clearSession() {

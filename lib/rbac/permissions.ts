@@ -145,12 +145,22 @@ export const DEFAULT_ROLE_PERMISSIONS: Record<string, string[]> = {
 export function hasPermission(userPermissions: string[] | string | undefined | null, requiredPermission: string): boolean {
   if (!userPermissions) return false;
   if (Array.isArray(userPermissions)) {
-    return userPermissions.includes(requiredPermission);
+    if (userPermissions.includes(requiredPermission)) return true;
+    if (requiredPermission === PERMISSIONS.REPORT_INVENTORY && userPermissions.includes(PERMISSIONS.REPORTS_VIEW)) {
+      return true;
+    }
+    return false;
   }
   if (typeof userPermissions === 'string') {
     try {
       const parsed = JSON.parse(userPermissions);
-      if (Array.isArray(parsed)) return parsed.includes(requiredPermission);
+      if (Array.isArray(parsed)) {
+        if (parsed.includes(requiredPermission)) return true;
+        if (requiredPermission === PERMISSIONS.REPORT_INVENTORY && parsed.includes(PERMISSIONS.REPORTS_VIEW)) {
+          return true;
+        }
+        return false;
+      }
     } catch {}
     return userPermissions.includes(requiredPermission);
   }

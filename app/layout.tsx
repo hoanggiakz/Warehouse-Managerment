@@ -5,4 +5,13 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" })
 export const metadata: Metadata = { title: "Automotive Parts & Warehouse Management System", description: "Academic foundation for Maluzen warehouse management." }
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en"><body className={`${inter.variable} ${jetbrainsMono.variable}`}><main>{children}</main><Toaster richColors position="top-right" /></body></html> }
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+        {children}
+        <Toaster richColors position="top-right" />
+      </body>
+    </html>
+  );
+}
